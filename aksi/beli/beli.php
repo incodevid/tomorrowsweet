@@ -70,6 +70,7 @@ else {
     $tgl_pesanan    = $_POST['tgl_pesanan'];
 
 
+
             
             $query = "INSERT INTO tb_orderan (kode_orderan,jml_beli,id_akun,nama_barang,nama_kategori,harga_barang,subtotal_beli,stok_beli,warna_beli,bank_bayar,jenis_kirim,ekspedisi,paket_kurir,tarif_paket,berat_barang,tgl_pesanan,status_beli) 
             VALUES ";

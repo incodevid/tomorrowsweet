@@ -92,7 +92,8 @@ else {
                 <div class="list-group main-menu">
                     <a href="index.php" class="list-group-item list-group-item-action">Beranda</a>
                     <a href="all_produk.php" class="list-group-item list-group-item-action">Semua Produk</a>
-                    <a href="riwayat.php" class="list-group-item list-group-item-action">Riwayat Transaksi <span class="badge badge-dark text-white"></span></a>
+                    <a href="riwayat.php" class="list-group-item list-group-item-action">Riwayat Transaksi</a>
+                    <a href="keranjang.php" class="list-group-item list-group-item-action">Keranjang Belanja</a>
                     <a href="profil.php" class="list-group-item list-group-item-action">Profil Saya</a>
                     <?php 
                     if($_SESSION['status_akun']=="Admin"){

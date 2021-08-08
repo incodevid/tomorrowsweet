@@ -58,6 +58,11 @@ else {
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
 
+    <!--Ini Datatablenya-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
+
     <link rel="stylesheet" href="asset/select2-4.0.6-rc.1/dist/css/select2.min.css">
 </head>
 
@@ -89,7 +94,8 @@ else {
                 <div class="list-group main-menu">
                     <a href="index.php" class="list-group-item list-group-item-action">Beranda</a>
                     <a href="all_produk.php" class="list-group-item list-group-item-action">Semua Produk</a>
-                    <a href="riwayat.php" class="list-group-item list-group-item-action">Riwayat Transaksi <span class="badge badge-dark text-white"></span></a>
+                    <a href="riwayat.php" class="list-group-item list-group-item-action">Riwayat Transaksi</a>
+                    <a href="keranjang.php" class="list-group-item list-group-item-action">Keranjang Belanja</a>
                     <a href="profil.php" class="list-group-item list-group-item-action">Profil Saya</a>
                     <?php 
                     if($_SESSION['status_akun']=="Admin"){
@@ -469,7 +475,7 @@ else {
                 <div class="modal-header">
                     <center><h5 class="header-title mb-0 align-self-center">Cek Pembelian</h5></center>
                 </div>
-                <div class="modal-body text-center pr-4 pl-4">
+                <div class="modal-body text-center pr-7 pl-7">
             <form class="was-validated" action="aksi/beli/beli.php" method="POST" enctype="multipart/form-data" >
             <div class="row">
                 <div class="col-12 px-0">
@@ -562,9 +568,9 @@ else {
             
             </script>
             
-            <div class="col-12 px-0" id="response_ongkir" >
+            <div class="col-12 px-0" id="response_ongkir" ></div>
              
-            
+             
   
 
     
@@ -572,7 +578,7 @@ else {
     
     <script>
       function myFunctionSaya() {
-        var z = document.getElementById("jtarif").value;
+        var z = document.getElementById("tarif").value;
         document.getElementById("output1").value = z;
         var output2 = document.getElementById("output2").value;
         var a = parseInt(document.getElementById('output1').value);
@@ -585,22 +591,7 @@ else {
             document.getElementById("hatot2").style.display = "block";
         };
       
-      $(function() {
-          $("select[name=jtarif]").change(function() {
-            
-            var tarif = $(this).find('option:selected').data('tarif');
-            var ongkir = $(this).find('option:selected').data('ongkir');
-            var paket = $(this).find('option:selected').data('paket');
-            var lama = $(this).find('option:selected').data('lama');
-
-           
-            $("#tarif1").val(tarif);
-            $("#ongkir1").val(ongkir);
-            $("#paket1").val(paket);
-            $("#lama1").val(lama);
-
-          }).change();
-        });
+      
       }
     </script>
     <script>
@@ -611,7 +602,7 @@ else {
 
 
     
-          </div>
+          
             
             <script>
                 function myFunctionBank() {
@@ -633,8 +624,8 @@ else {
            
             <div class="card-body form-group  ">
             <label style="color:grey;float: left;">Pembayaran Melalui Bank</label>
-                <select class="custom-select" autocomplete="off" oninvalid="this.setCustomValidity('Harap pilih bank pembayaran!')" name="bankcek" id="bankcek" oninput="setCustomValidity('')" onchange="myFunctionBank(this.value)" required>
-                    <option value="">-- PILIH BANK BAYAR --</option>
+                <select class="custom-select" style="font:normal 14px Arial" autocomplete="off" oninvalid="this.setCustomValidity('Harap pilih bank pembayaran!')" name="bankcek" id="bankcek" oninput="setCustomValidity('')" onchange="myFunctionBank(this.value)" required>
+                    <option value="" >-- PILIH BANK BAYAR --</option>
                     <option value="BRI">BRI</option>
                     <option value="BCA">BCA</option>
                 </select>
@@ -691,10 +682,10 @@ else {
             
             
                 <input type="hidden" name="kurir" id="kurir1" value="" >
-                <input type="hidden" name="tarif"  id="tarif1" value="" class="form-control ">
-                <input type="hidden" name="ongkir" id="ongkir1" value="" class="form-control ">
-                <input type="hidden" name="paket"  id="paket1" value="" class="form-control ">
-                <input type="hidden" name="lama"   id="lama1" value="" class="form-control ">
+                <input type="hidden" name="tarif"  id="tarif" value="" class="form-control ">
+                <input type="hidden" name="ongkir" id="ongkir" value="" class="form-control ">
+                <input type="hidden" name="paket"  id="paket" value="" class="form-control ">
+                <input type="hidden" name="lama"   id="lama" value="" class="form-control ">
           
 
 
@@ -900,7 +891,11 @@ else {
     <!-- nouislider js -->
     <script src="vendor/nouislider/nouislider.min.js"></script>
 
-    <!-- chosen multiselect js -->
+    <!--Ini Datatablenya-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
     
 
     <!-- template custom js -->
@@ -968,7 +963,7 @@ else {
                   type: 'post',
                   data: 'kurir='+kurir_terpilih+'&kota_tujuan='+tujuan_terpilih+'&berat='+total_berat,
                   success: function(data) {
-                    document.getElementById("response_ongkir").innerHTML = data;
+                    $("#response_ongkir").html(data);
                   }
               });
         });

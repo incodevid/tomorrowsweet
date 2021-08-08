@@ -54,6 +54,7 @@ $kotatujuan=$data['rajaongkir']['destination_details']['city_name'];
 $provinsitujuan=$data['rajaongkir']['destination_details']['province'];
 $berat=$data['rajaongkir']['query']['weight']/1000;
 
+$hasil=$data['rajaongkir']['results'][0]['costs'];
 ?>    
 
 <div class="panel panel-default">
@@ -79,24 +80,94 @@ $berat=$data['rajaongkir']['query']['weight']/1000;
             <p  ></p>
             </div>
             <div class="card-body form-group  ">
-              <label style="color:grey;float: left;">Paket Ekspedisi</label>
-                <select class="custom-select" autocomplete="off" oninvalid="this.setCustomValidity('Harap pilih paket ekspedisi!')" oninput="setCustomValidity('')"  name="jtarif" id="jtarif" onchange="myFunctionSaya(this)"  required>
-                  <option value="">-- PILIH PAKET --</option>
-                <?php
-                foreach ($data['rajaongkir']['results'][0]['costs'] as $valuek) {
-
-                foreach ($valuek['cost'] as $tarif) {
-                echo "<option 
-                value='".$tarif['value']."'
-                data-tarif='".$tarif['value']."' 
-                data-ongkir='".$kurir['courier']."' 
-                data-paket='".$valuek['service']."'
-                data-lama='".$tarif['etd']."' >Rp ". number_format($tarif['value'],2,',','.')." (".$kurir['courier']."-".$valuek['service']." ".$tarif['etd'].")</option>";
-                }
-                }
-                ?>
-                </select>
+              <label style="color:grey;float: left;">Paket Ekspedisi</label>                    
             </div>
+
+<?php
+     for ($k=0; $k < count($data['rajaongkir']['results']); $k++) {
+    ?>
+         <div title="<?php echo strtoupper($data['rajaongkir']['results'][$k]['name']);?>" style="padding:10px">
+             <table  id="example"  style="width:100%">
+                 <tr style="font:bold 12px Arial">
+                     <th>No.</th>
+                     <th>Jenis Layanan</th>
+                     <th>ETD</th>
+                     <th>Tarif</th>
+                     <th>Pilih</th>
+                 </tr>
+                 <?php
+    
+                 for ($l=0; $l < count($data['rajaongkir']['results'][$k]['costs']); $l++) {
+                 ?>
+                 <tr>
+                     <td style="font:bold 12px Arial"><?php echo $l+1;?></td>
+                     <td>
+                         <div style="font:bold 10px Arial"><?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['service'];?></div>
+                         <div style="font:normal 11px Arial"><?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['description'];?></div>
+                     </td>
+                     <td align="center">
+                        <div style="font:normal 11px Arial">&nbsp;<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd'];?> hari</div>
+                    </td>
+                     <td align="right">
+                        <div style="font:normal 11px Arial">Rp. <?php echo number_format($data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value']);?></div>
+                     </td>
+                     <td>
+                    
+                         <div class="radio">
+                            <label>
+                                <input type="radio" 
+                                data-tarif="<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value']; ?>" 
+                                data-ongkir="<?php echo $data['rajaongkir']['results'][$k]['name'][$l]['courier']; ?>" 
+                                data-paket="<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['service']; ?>"
+                                data-lama="<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd']; ?>"  name="jtarif" id="jtarif" class="jtarif" onclick="myFunctionSaya(this)" ></label>
+                        </div>
+                    </td>
+                 </tr>
+                 <?php
+                 }
+                 ?>
+             </table>
+         </div>
+     <?php
+    }
+    ?>
+    
+
+
+
+<script type="text/javascript">
+    $('.jtarif').on('click',function(){
+
+        var tarif = $(this).data("tarif");
+        var ongkir = $(this).data("ongkir");
+        var paket = $(this).data("paket");
+        var lama = parseInt($(this).data("lama"));
+
+        $('#tarif').val(tarif);
+        $('#ongkir').val(ongkir);
+        $('#paket').val(paket);
+        $('#lama').val(lama + ' hari');
+    
+    });
+
+    function format_rupiah(nominal){
+        var  reverse = nominal.toString().split('').reverse().join(''),
+             ribuan = reverse.match(/\d{1,3}/g);
+         return ribuan  = ribuan.join('.').split('').reverse().join('');
+    }
+</script> 
+
+<script type="text/javascript">
+        $(document).ready(function() {
+    var table = $('#example').DataTable( {
+        rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+        responsive: true
+    } );
+} );
+    </script>
+   
           
         </div>
     </div>

@@ -57,8 +57,11 @@ else {
     $id_akun         = $_SESSION['id_akun'];
 
 
-    $sql1 = mysqli_query($koneksi,"SELECT * FROM tb_keranjang WHERE id_barang='$id_barang' AND warna_beli='$warna_beli' AND id_akun='$id_akun' ") or die(mysql_error());
+    $sql1 = mysqli_query($koneksi,"SELECT * FROM tb_keranjang WHERE id_barang='$id_barang' AND warna_beli='$warna_beli'  AND id_akun='$id_akun' ") or die(mysql_error());
     $cek=mysqli_num_rows($sql1);
+
+          $sqlnol = mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_barang='$id_barang' AND stok_barang='0' ") or die(mysql_error());
+          $ceknol=mysqli_fetch_assoc($sqlnol);
 
 if ($cek>0){
    echo '<script>setTimeout(function() { 
@@ -67,6 +70,15 @@ if ($cek>0){
             }); 
         }); </script>' ;
 } else {
+
+
+        if ($ceknol['stok_barang'] == '0'){
+        echo '<script>setTimeout(function() { 
+        swal("Gagal Tersimpan! Stok sudah habis", "Klik tombol dibawah untuk melanjutkan", "error").then(function() { 
+                window.location.href="../../produk_detail.php?id_barang='.$id_barang.'"; 
+            }); 
+        }); </script>' ;
+        } else {
             
             $sql = mysqli_query($koneksi,"INSERT INTO tb_keranjang (id_barang,jumlah_stok,warna_beli,id_akun) 
             VALUES ('$id_barang','$jumlah_stok','$warna_beli','$id_akun')");
@@ -85,6 +97,9 @@ if ($cek>0){
                         }); 
                     }); </script>' ;
              }
+
+
+           }
 
       }
 
