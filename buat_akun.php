@@ -161,7 +161,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"])) {
                 </div>
 
                 <div class="form-group float-label ">
-                    <input type="text" name="email" class="form-control" required  autofocus autocomplete="off">
+                    <input type="email" name="email" class="form-control" required  autofocus autocomplete="off">
                     <label class="form-control-label">Email</label>
                 </div>
 

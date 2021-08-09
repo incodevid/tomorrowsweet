@@ -209,7 +209,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"])) {
     
         <div class="container">
                 <center><h2>TAMBAH AKUN ADMIN</h2></center>
-        <form class="was-validated" action="" method="POST" enctype="multipart/form-data" >
+        <form  action="" method="POST" enctype="multipart/form-data" >
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="form-group">

@@ -62,6 +62,8 @@ else {
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
 
+    <link href="dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -191,12 +193,12 @@ if (!empty($_FILES["nama_file"]["tmp_name"])) {
     ?>
         <div class="container">
                 <center><h2>TAMBAH FOTO PRODUK</h2></center>
-        <form class="was-validated"  method="POST" enctype="multipart/form-data" >
+        <form   method="POST" enctype="multipart/form-data" >
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="form-group">
                         <label>Pilih Barang</label>
-                        <select class="custom-select" name="id_barang" class="form-control" autocomplete="off"   oninvalid="this.setCustomValidity('Harap pilih barang!')" oninput="setCustomValidity('')" required>
+                        <select class="custom-select" id="selek2" name="id_barang" class="form-control" autocomplete="off"   oninvalid="this.setCustomValidity('Harap pilih barang!')" oninput="setCustomValidity('')" required>
                             <option value="">--Pilih Barang--</option>
                             <?php
                             $query = mysqli_query($koneksi,"SELECT * FROM tb_barang");
@@ -415,6 +417,8 @@ while($data2  = mysqli_fetch_assoc($query2)){
     <script src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
 
+    <script src="dist/js/select2.min.js"></script>
+
     <!-- page level script -->
     <script>
         $(window).on('load', function() {
@@ -433,6 +437,12 @@ while($data2  = mysqli_fetch_assoc($query2)){
         responsive: true
     } );
 } );
+    </script>
+
+    <script>
+        $(document).ready(function() {
+        $('#selek2').select2();
+        });
     </script>
 
 </body>

@@ -63,6 +63,9 @@ else {
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
 
+    <link href="dist/css/select2.min.css" rel="stylesheet" />
+    
+
 </head>
 
 <body>
@@ -134,10 +137,11 @@ if (isset($_POST['btnSimpan'])) {
     
     $id_barang      = $_POST['id_barang']; 
     $warna_barang   = $_POST['warna_barang']; 
+    $ukuran         = $_POST['ukuran']; 
     $stok_barang    = $_POST['stok_barang']; 
 
 
-$sql = mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_barang='$id_barang' ") or die(mysql_error());
+$sql = mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_barang='$id_barang' AND warna_barang='$warna_barang' AND ukuran='$ukuran' ") or die(mysql_error());
 $cek=mysqli_num_rows($sql);
 
 if ($cek>0){
@@ -150,8 +154,8 @@ if ($cek>0){
 
 
             
-            $sql = mysqli_query($koneksi,"INSERT INTO tb_detail_barang (id_barang,warna_barang,stok_barang) 
-            VALUES ('$id_barang','$warna_barang','$stok_barang')");
+            $sql = mysqli_query($koneksi,"INSERT INTO tb_detail_barang (id_barang,warna_barang,ukuran,stok_barang) 
+            VALUES ('$id_barang','$warna_barang','$ukuran','$stok_barang')");
 
             
             if ($sql) {
@@ -179,29 +183,30 @@ if ($cek>0){
     ?>
         <div class="container">
                 <center><h2>TAMBAH DETAIL PRODUK</h2></center>
-        <form class="was-validated"  method="POST" enctype="multipart/form-data" >
+        <form   method="POST" enctype="multipart/form-data" >
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="form-group">
                         <label>Pilih Barang</label>
-                        <select class="custom-select" name="id_barang" class="form-control" autocomplete="off"  name="nama" oninvalid="this.setCustomValidity('Harap pilih barang!')" oninput="setCustomValidity('')" required>
+                        <select class="custom-select" id="selek2" name="id_barang" class="form-control" autocomplete="off"  name="nama" oninvalid="this.setCustomValidity('Harap pilih barang!')" oninput="setCustomValidity('')" required>
                             <option value="">--Pilih Barang--</option>
                             <?php
                             $query = mysqli_query($koneksi,"SELECT *,a.`id_barang` AS baranga,COUNT(b.`id_barang`) AS jml_dtl FROM tb_barang a 
                             LEFT JOIN tb_detail_barang b ON a.`id_barang`=b.`id_barang` GROUP BY a.`id_barang` DESC ;");
                             while($datbar  = mysqli_fetch_assoc($query)){
-                                if($datbar['jml_dtl']=='0'){
+                                
                             ?>
                             <option value="<?php echo $datbar['baranga']; ?>"><?php echo $datbar['nama_barang']; ?>--<?php echo $datbar['status_barang']; ?></option>
-                            <?php }else{ ?>
-                            Tidak Ada
-                            <?php } ?>
                             <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Warna Barang</label>
                         <input type="text" class="form-control form-control-sm" autocomplete="off"  name="warna_barang" oninvalid="this.setCustomValidity('Harap isi warna barang!')" oninput="setCustomValidity('')" required placeholder="Merah,Biru,Pink">
+                    </div>
+                    <div class="form-group">
+                        <label>Ukuran Barang</label>
+                        <input type="text" class="form-control form-control-sm" autocomplete="off"  name="ukuran" oninvalid="this.setCustomValidity('Harap isi ukuran barang!')" oninput="setCustomValidity('')" required placeholder="S, M, L, XL">
                     </div>
                     <div class="form-group">
                         <label>Stok Barang</label>
@@ -223,6 +228,7 @@ if ($cek>0){
                 <th>No</th>
                 <th>Nama Barang</th>
                 <th>Warna</th>
+                <th>Ukuran</th>
                 <th>Stok</th>
                 <th>Foto</th>
                 <th>Aksi</th>
@@ -238,6 +244,7 @@ while($data  = mysqli_fetch_assoc($query)){
                 <td><?php echo $no ?></td>
                 <td><?php echo $data['nama_barang']; ?></td>
                 <td><?php echo $data['warna_barang'];?></td>
+                <td><?php echo $data['ukuran'];?></td>
                 <td><?php echo $data['stok_barang'];?></td>
                 <td><img src="img/produk/<?php echo $data['foto_barang'];?>" style="height:170px;"></td>
                 <td>
@@ -377,6 +384,10 @@ while($data1  = mysqli_fetch_assoc($query1)){
                         <label>Warna Barang</label>
                         <input type="text" class="form-control form-control-sm" autocomplete="off"  name="warna_barang" oninvalid="this.setCustomValidity('Harap isi warna barang!')" oninput="setCustomValidity('')" required value="<?php echo $data1['warna_barang']; ?>">
                     </div>
+                     <div class="form-group">
+                        <label>Ukuran Barang</label>
+                        <input type="text" class="form-control form-control-sm" autocomplete="off"  name="ukuran" oninvalid="this.setCustomValidity('Harap isi ukuran barang!')" oninput="setCustomValidity('')" required value="<?php echo $data1['ukuran']; ?>">
+                    </div>
                     <div class="form-group">
                         <label>Stok Barang</label>
                         <input type="text" class="form-control form-control-sm" autocomplete="off"  name="stok_barang" oninvalid="this.setCustomValidity('Harap isi jumlah stok barang!')" oninput="setCustomValidity('')" required value="<?php echo $data1['stok_barang']; ?>">
@@ -451,6 +462,8 @@ while($data1  = mysqli_fetch_assoc($query1)){
     <script src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
 
+    <script src="dist/js/select2.min.js"></script>
+
     <!-- page level script -->
     <script>
         $(window).on('load', function() {
@@ -468,6 +481,12 @@ while($data1  = mysqli_fetch_assoc($query1)){
         responsive: true
     } );
 } );
+    </script>
+
+    <script>
+        $(document).ready(function() {
+        $('#selek2').select2();
+        });
     </script>
 
 

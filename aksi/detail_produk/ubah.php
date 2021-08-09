@@ -36,13 +36,14 @@ include '../../config.php';
 <?php
 
     $warna_barang      = $_POST['warna_barang']; 
+    $ukuran            = $_POST['ukuran']; 
     $stok_barang       = $_POST['stok_barang'];  
     $id_detail_barang  = $_GET['id_detail_barang'];
 
 
 
             
-            $sql = mysqli_query($koneksi,"UPDATE tb_detail_barang SET warna_barang='$warna_barang',stok_barang='$stok_barang' WHERE id_detail_barang='$id_detail_barang'");
+            $sql = mysqli_query($koneksi,"UPDATE tb_detail_barang SET warna_barang='$warna_barang',ukuran='$ukuran',stok_barang='$stok_barang' WHERE id_detail_barang='$id_detail_barang'");
 
             
             if ($sql) {

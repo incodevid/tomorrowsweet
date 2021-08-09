@@ -24,7 +24,7 @@ else {
             $barang = mysqli_fetch_assoc($sqlb);
 
             $id_barang=$_GET['id_barang'];
-            $sqld = mysqli_query($koneksi, "SELECT *,COUNT(id_detail_barang) AS jumlah FROM tb_detail_barang a INNER JOIN tb_barang b ON a.id_barang=b.id_barang WHERE b.id_barang='$id_barang' ");
+            $sqld = mysqli_query($koneksi, "SELECT *,SUM(stok_barang) AS jumlah FROM tb_detail_barang a INNER JOIN tb_barang b ON a.id_barang=b.id_barang WHERE b.id_barang='$id_barang' ");
             $detail = mysqli_fetch_assoc($sqld);
 
             $id_barang=$_GET['id_barang'];
@@ -182,13 +182,9 @@ while($data  = mysqli_fetch_assoc($query1)){
             <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18"></i></button>
             
             <div class="badge badge-success float-right mt-1">
-                <?php
-                if($detail['jumlah']=="1"){
-                ?>
-                Stok <?php echo $detail['stok_barang']; ?>
-                <?php }else{ ?>
-                  Stok Tidak Ada
-                <?php } ?>
+                
+                Stok <?php echo $detail['jumlah']; ?>
+                
                     
             </div>
             <!--
