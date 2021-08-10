@@ -139,6 +139,9 @@ if (isset($_POST['btnSimpan'])) {
     $warna_barang   = $_POST['warna_barang']; 
     $ukuran         = $_POST['ukuran']; 
     $stok_barang    = $_POST['stok_barang']; 
+    $jam                    = date('His');
+
+    $namafolder     ="gambar_detail/";
 
 
 $sql = mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_barang='$id_barang' AND warna_barang='$warna_barang' AND ukuran='$ukuran' ") or die(mysql_error());
@@ -153,9 +156,17 @@ if ($cek>0){
 } else {
 
 
+
+    if (!empty($_FILES["nama_file"]["tmp_name"])) {   
+    $jenis_gambar=$_FILES['nama_file']['type'];
+    if($jenis_gambar=="image/jpeg" || $jenis_gambar=="image/jpg" || $jenis_gambar=="image/gif" || $jenis_gambar=="image/png" )     {      
+     $jpg1 =  "gambar-detail_".$jam.".jpg";               
+    if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $namafolder . $jpg1)) {
+
+
             
-            $sql = mysqli_query($koneksi,"INSERT INTO tb_detail_barang (id_barang,warna_barang,ukuran,stok_barang) 
-            VALUES ('$id_barang','$warna_barang','$ukuran','$stok_barang')");
+            $sql = mysqli_query($koneksi,"INSERT INTO tb_detail_barang (id_barang,warna_barang,ukuran,stok_barang,gambar_detail) 
+            VALUES ('$id_barang','$warna_barang','$ukuran','$stok_barang','$jpg1')");
 
             
             if ($sql) {
@@ -171,6 +182,29 @@ if ($cek>0){
                         }); 
                     }); </script>' ;
              }
+
+
+             } else {
+    ?>        
+    <script>setTimeout(function() { 
+    swal("Gagal Diupload!", "Klik tombol dibawah untuk melanjutkan", "error").then(function() { 
+            window.location.href="tambah_detail.php"; 
+        }); 
+    }); </script>
+    <?php
+} 
+    }
+    else {    
+     ?>
+     <script>setTimeout(function() { 
+    swal("Gagal Diupload! File Bukan Jpg / Foto", "Klik tombol dibawah untuk melanjutkan", "error").then(function() { 
+            window.location.href="tambah_detail.php"; 
+        }); 
+    }); </script>
+
+      <?php
+ } 
+    }
               
      
     }
@@ -188,15 +222,15 @@ if ($cek>0){
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="form-group">
                         <label>Pilih Barang</label>
-                        <select class="custom-select" id="selek2" name="id_barang" class="form-control" autocomplete="off"  name="nama" oninvalid="this.setCustomValidity('Harap pilih barang!')" oninput="setCustomValidity('')" required>
+                        <select  id="selek2" name="id_barang" class="form-control" autocomplete="off"  name="nama" oninvalid="this.setCustomValidity('Harap pilih barang!')" oninput="setCustomValidity('')" required>
                             <option value="">--Pilih Barang--</option>
                             <?php
-                            $query = mysqli_query($koneksi,"SELECT *,a.`id_barang` AS baranga,COUNT(b.`id_barang`) AS jml_dtl FROM tb_barang a 
+                            $query = mysqli_query($koneksi,"SELECT * FROM tb_barang a 
                             LEFT JOIN tb_detail_barang b ON a.`id_barang`=b.`id_barang` GROUP BY a.`id_barang` DESC ;");
                             while($datbar  = mysqli_fetch_assoc($query)){
                                 
                             ?>
-                            <option value="<?php echo $datbar['baranga']; ?>"><?php echo $datbar['nama_barang']; ?>--<?php echo $datbar['status_barang']; ?></option>
+                            <option value="<?php echo $datbar['id_barang']; ?>"><?php echo $datbar['nama_barang']; ?>--<?php echo $datbar['status_barang']; ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -211,6 +245,11 @@ if ($cek>0){
                     <div class="form-group">
                         <label>Stok Barang</label>
                         <input type="number" class="form-control form-control-sm" autocomplete="off"  name="stok_barang" oninvalid="this.setCustomValidity('Harap isi jumlah stok barang!')" oninput="setCustomValidity('')" required placeholder="Contoh: 10">
+                    </div>
+                    <div class="form-group">
+                        <label>Foto Barang</label>
+                        <input name="nama_file" type="file"  class="form-control" oninvalid="this.setCustomValidity('Harap pilih file foto barang!')" oninput="setCustomValidity('')"  required >
+                        <div class="invalid-feedback">Foto belum di pilih.</div>
                     </div>
                 </div>
                 
@@ -246,7 +285,7 @@ while($data  = mysqli_fetch_assoc($query)){
                 <td><?php echo $data['warna_barang'];?></td>
                 <td><?php echo $data['ukuran'];?></td>
                 <td><?php echo $data['stok_barang'];?></td>
-                <td><img src="img/produk/<?php echo $data['foto_barang'];?>" style="height:170px;"></td>
+                <td><img src="gambar_detail/<?php echo $data['gambar_detail'];?>" style="height:170px;"></td>
                 <td>
                     <a class="btn btn-primary btn-xs"><i data-toggle="modal" data-target="#exampleModalCenter<?php echo $data['id_detail_barang']; ?>" class="material-icons">build</i></a>                                 
                             
@@ -372,9 +411,14 @@ while($data1  = mysqli_fetch_assoc($query1)){
                     <h5 class="header-title mb-0">Ubah Data Barang</h5>
                 </div>
                 <div class="modal-body text-center pr-4 pl-4">
-                    <figure class="avatar avatar-120 rounded-circle mt-0 border-0">
-                        <img src="img/produk/<?php echo $data1['foto_barang']; ?>" alt="user image">
-                    </figure>
+                    <div class="text-center">
+                        <div class="figure-profile shadow my-4">
+                            <figure><img src="gambar_detail/<?php echo $data1['gambar_detail']; ?>" alt=""></figure>
+                            <div class="btn btn-dark text-white floating-btn">
+                                <i data-toggle="modal" data-target="#UbahFoto<?php echo $data1['id_detail_barang']; ?>" class="material-icons">camera_alt</i>
+                            </div>
+                        </div>
+                    </div>
                     <h5 class="my-3"><?php echo $data1['nama_barang']; ?></h5>
                    
                     <form class="was-validated" action="aksi/detail_produk/ubah.php?id_detail_barang=<?php echo $data1['id_detail_barang']; ?>" method="POST" enctype="multipart/form-data" >
@@ -403,6 +447,36 @@ while($data1  = mysqli_fetch_assoc($query1)){
             </div>
         </div>
     </div>
+
+<div class="modal fade" id="UbahFoto<?php echo $data1['id_detail_barang']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content shadow">
+                <div class="modal-header">
+                    <h5 class="header-title mb-0">Ubah Foto</h5>
+                </div>
+                <div class="modal-body text-center pr-4 pl-4">
+                    <figure class="avatar avatar-120 rounded-circle mt-0 border-0">
+                        <img src="gambar_detail/<?php echo $data1['gambar_detail']; ?>" alt="user image">
+                    </figure>
+
+                                       
+                    <form action="aksi/detail_produk/ubah_gambar_detail.php?id_detail_barang=<?php echo $data1['id_detail_barang']; ?>"  method="POST" enctype="multipart/form-data">
+                    
+                    <div class="custom-file">
+                        <input name="nama_file_detail" type="file"  class="form-control" oninvalid="this.setCustomValidity('Harap pilih file foto!')" oninput="setCustomValidity('')"  required >
+                        <div class="invalid-feedback">Foto belum di pilih.</div>
+                    </div>
+                    <br><br>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-default btn-rounded btn-block col">SIMPAN</button>
+                        <button type="button" data-dismiss="modal" class="btn btn-lg btn-default text-white btn-block btn-rounded shadow">Batal</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="hapusDetail<?php echo $data1['id_detail_barang']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content shadow">

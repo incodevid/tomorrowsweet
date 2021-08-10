@@ -130,7 +130,7 @@ else {
                     <img src="img/thankyou-payment.png" alt="" class="mt-5 mw-100">
                     <h1 class="my-4">Terima Kasih!</h1>
                     <h5>Telah menyelesaikan pembelian di Alfazza Shop</h5>
-                    <p class="text-secondary">Diharapkan segera melakukan pembayaran dalam waktu 1x24 jam.<br>Apabila pembayaran tidak dilakuan dalam waktu 1x24 jam, orderan akan dibatalkan.<br><a href="riwayat.php">Lihat Transaksi</a></p>
+                    <p class="text-secondary">Diharapkan segera melakukan pembayaran dalam waktu 1x24 jam.<br>Apabila pembayaran tidak dilakuan dalam waktu 1x24 jam, orderan akan dibatalkan.<br><b><a href="riwayat.php">Lihat Transaksi</a></b></p>
                     <br>
                 </div>
             </div>

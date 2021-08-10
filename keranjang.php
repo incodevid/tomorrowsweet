@@ -316,7 +316,7 @@ else {
       CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => "origin=".'206'."&destination=".$kota_tujuan."&weight=".$berat."&courier=".$kurir."",
+      CURLOPT_POSTFIELDS => "origin=".'326'."&destination=".$kota_tujuan."&weight=".$berat."&courier=".$kurir."",
       CURLOPT_HTTPHEADER => array(
         "content-type: application/x-www-form-urlencoded",
         "key: 091cd2af1b6e9dfef167d53406edd4c3"
@@ -576,24 +576,7 @@ else {
     
 
     
-    <script>
-      function myFunctionSaya() {
-        var z = document.getElementById("tarif").value;
-        document.getElementById("output1").value = z;
-        var output2 = document.getElementById("output2").value;
-        var a = parseInt(document.getElementById('output1').value);
-        var b = parseInt(document.getElementById('output2').value);
-        document.getElementById("hasiltot").innerHTML = toP(a + b);
-
-        if ( z == "") {
-            document.getElementById("hatot2").style.display = "none";
-        }else{
-            document.getElementById("hatot2").style.display = "block";
-        };
-      
-      
-      }
-    </script>
+    
     <script>
       
 

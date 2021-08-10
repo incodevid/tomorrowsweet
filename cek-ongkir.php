@@ -37,7 +37,7 @@ CURLOPT_MAXREDIRS => 10,
 CURLOPT_TIMEOUT => 30,
 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 CURLOPT_CUSTOMREQUEST => "POST",
-CURLOPT_POSTFIELDS => "origin=".'206'."&destination=".$kota_tujuan."&weight=".$berat."&courier=".$kurir."",
+CURLOPT_POSTFIELDS => "origin=".'326'."&destination=".$kota_tujuan."&weight=".$berat."&courier=".$kurir."",
 CURLOPT_HTTPHEADER => array(
 "content-type: application/x-www-form-urlencoded",
 "key: 091cd2af1b6e9dfef167d53406edd4c3"
@@ -119,7 +119,7 @@ $hasil=$data['rajaongkir']['results'][0]['costs'];
                                 data-tarif="<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value']; ?>" 
                                 data-ongkir="<?php echo $data['rajaongkir']['results'][$k]['name'][$l]['courier']; ?>" 
                                 data-paket="<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['service']; ?>"
-                                data-lama="<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd']; ?>"  name="jtarif" id="jtarif" class="jtarif" onclick="myFunctionSaya(this)" ></label>
+                                data-lama="<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd']; ?>"  name="jtarif" id="jtarif" class="jtarif"  ></label>
                         </div>
                     </td>
                  </tr>
@@ -147,6 +147,18 @@ $hasil=$data['rajaongkir']['results'][0]['costs'];
         $('#ongkir').val(ongkir);
         $('#paket').val(paket);
         $('#lama').val(lama + ' hari');
+
+        $('#output1').val(tarif);
+        var output2 = document.getElementById("output2").value;
+        var a = parseInt(document.getElementById('output1').value);
+        var b = parseInt(document.getElementById('output2').value);
+        document.getElementById("hasiltot").innerHTML = toP(a + b);
+
+        if ( tarif == "") {
+            document.getElementById("hatot2").style.display = "none";
+        }else{
+            document.getElementById("hatot2").style.display = "block";
+        };
     
     });
 

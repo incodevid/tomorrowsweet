@@ -74,17 +74,7 @@ else {
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     
-    <style>
-        .swiper-slide{
-            height:150%;
-        }
-        .swiper-wrapper{
-            height:150%;
-        }
-        .swiper-container{
-            height:400px;
-        }
-    </style>
+   
     
     
 </head>
@@ -207,7 +197,67 @@ while($data  = mysqli_fetch_assoc($query1)){
             </a>
             <p class="text-secondary small mb-2"><?php echo $barang['nama_kategori']; ?></p>
 
-            <p class="text-secondary"><?php echo $barang['deskripsi']; ?></p>
+
+            <h6 class="subtitle">Varian Barang</h6>
+                <div class="row">
+                <!-- Swiper -->
+                <div class="swiper-container small-slide">
+                    <div class="swiper-wrapper">
+                        <?php 
+$id_barang=$_GET['id_barang'];
+$query1 = mysqli_query($koneksi,"SELECT * FROM  tb_detail_barang a 
+RIGHT JOIN tb_barang b ON a.id_barang=b.id_barang WHERE a.id_barang='$id_barang' GROUP BY a.`id_detail_barang` ;  ");
+
+$cek=mysqli_num_rows($query1);
+
+if ($cek>0){
+
+while($data  = mysqli_fetch_assoc($query1)){
+
+    
+?>
+                        <div class="swiper-slide" >
+                            <div class="card shadow-sm border-0" style="background-image:url(gambar_detail/<?php echo str_replace('', '%20', $data[gambar_detail] ) ?>);background-repeat: no-repeat;width: 100%;height: 100%;background-size: 100%;">
+                                <div class="card-body">
+                                    <div class="row no-gutters h-100" >
+                                        <div class="col-12">
+                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18"></i></button>
+                                            <a  class="badge badge-warning text-dark mb-1 mt-2 h6 d-block float-right"><?php echo $data['warna_barang']; ?></a>
+                                        </div>
+                                        <div class="col-12">
+                                            <a  class="badge badge-info text-white mb-1 mt-1 h6 d-block float-right">Ukuran: <?php echo $data['ukuran']; ?> </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php }?>
+                        <?php }else{?>
+            
+              <div style="margin: 10px auto 20px;display: block;" >
+              <h4>Tidak Ada Varian</h4>
+              </div>
+
+            <?php } ?>
+                    </div>
+                </div>
+                </div>
+
+          
+            <a style="color: black;">Deskripsi :</a>
+            <p><a class="text-secondary small mb-5"><?php echo $barang['deskripsi']; ?></a></p>
+        
+            
+
+            
+            
+           
+         
+
+            
+                
+           
+
             <div class="row mb-4">
                 <div class="col">
                     <h3 class="text-success font-weight-normal mb-0"><?php echo harga($barang['harga_barang']) ?></h3>
@@ -472,6 +522,11 @@ while($datak  = mysqli_fetch_assoc($queryk)){
                 pagination: {
                     el: '.swiper-pagination'
                 }
+            });
+
+            var swiper = new Swiper('.small-slide', {
+                slidesPerView: 'auto',
+                spaceBetween: 0,
             });
 
 

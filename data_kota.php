@@ -45,7 +45,7 @@
 					 tipe_kota='".$tiapkota["type"]."'
 					 kodepos='".$tiapkota["postal_code"]."' >";
 				echo $tiapkota["type"]." ";
-				echo $tiapkota["city_name"];
+				echo $tiapkota["city_name"]."-".$tiapkota["city_id"];
 				echo "</option>";
 			}
 
