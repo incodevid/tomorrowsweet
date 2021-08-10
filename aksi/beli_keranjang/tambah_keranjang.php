@@ -51,16 +51,17 @@ else {
 <body>
 <?php
 
-    $id_barang       = $_POST['id_barang']; 
-    $jumlah_stok     = $_POST['jumlah_stok']; 
-    $warna_beli      = $_POST['warna_beli']; 
-    $id_akun         = $_SESSION['id_akun'];
+    $id_detail_barang       = $_POST['id_detail_barang']; 
+    $jumlah_stok            = $_POST['jumlah_stok']; 
+    $warna_beli             = $_POST['warna_beli']; 
+    $ukuran_beli            = $_POST['ukuran_beli']; 
+    $id_akun                = $_SESSION['id_akun'];
 
 
-    $sql1 = mysqli_query($koneksi,"SELECT * FROM tb_keranjang WHERE id_barang='$id_barang' AND warna_beli='$warna_beli'  AND id_akun='$id_akun' ") or die(mysql_error());
+    $sql1 = mysqli_query($koneksi,"SELECT * FROM tb_keranjang WHERE id_detail_barang='$id_detail_barang' AND warna_beli='$warna_beli'  AND id_akun='$id_akun' ") or die(mysql_error());
     $cek=mysqli_num_rows($sql1);
 
-          $sqlnol = mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_barang='$id_barang' AND stok_barang='0' ") or die(mysql_error());
+          $sqlnol = mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_detail_barang='$id_detail_barang' AND stok_barang='0' ") or die(mysql_error());
           $ceknol=mysqli_fetch_assoc($sqlnol);
 
 if ($cek>0){
@@ -80,8 +81,8 @@ if ($cek>0){
         }); </script>' ;
         } else {
             
-            $sql = mysqli_query($koneksi,"INSERT INTO tb_keranjang (id_barang,jumlah_stok,warna_beli,id_akun) 
-            VALUES ('$id_barang','$jumlah_stok','$warna_beli','$id_akun')");
+            $sql = mysqli_query($koneksi,"INSERT INTO tb_keranjang (id_detail_barang,jumlah_stok,warna_beli,ukuran_beli,id_akun) 
+            VALUES ('$id_detail_barang','$jumlah_stok','$warna_beli','$ukuran_beli','$id_akun')");
 
             
             if ($sql) {

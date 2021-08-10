@@ -24,7 +24,7 @@ else {
             $barang = mysqli_fetch_assoc($sqlb);
 
             $id_barang=$_GET['id_barang'];
-            $sqld = mysqli_query($koneksi, "SELECT *,SUM(stok_barang) AS jumlah FROM tb_detail_barang a INNER JOIN tb_barang b ON a.id_barang=b.id_barang WHERE b.id_barang='$id_barang' ");
+            $sqld = mysqli_query($koneksi, "SELECT *,SUM(stok_barang) AS jumlah FROM tb_detail_barang a INNER JOIN tb_barang b ON a.id_barang=b.id_barang WHERE b.id_barang='$id_barang' GROUP BY a.id_detail_barang DESC");
             $detail = mysqli_fetch_assoc($sqld);
 
             $id_barang=$_GET['id_barang'];
@@ -74,7 +74,7 @@ else {
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     
     
 </head>
@@ -173,7 +173,7 @@ while($data  = mysqli_fetch_assoc($query1)){
             
             <div class="badge badge-success float-right mt-1">
                 
-                Stok <?php echo $detail['jumlah']; ?>
+                <a style="color: white;font:bold 15px Arial">Stok</a> <a style="color: white;font:bold 15px Arial" id="stok1"><?php echo $detail['stok_barang']; ?></a>
                 
                     
             </div>
@@ -188,13 +188,17 @@ while($data  = mysqli_fetch_assoc($query1)){
             </p>-->
 
             <a href="#" class="text-dark mb-1 mt-2 h6 d-block"><?php echo $barang['nama_barang']; ?>
-                <span class="small float-right badge bg-warning">
-                    <i class="material-icons h5 mb-0">brush</i>
-                    <?php echo $detail['warna_barang']; ?>
-                </span>
-
-
             </a>
+                <div class=" small float-right badge bg-warning">
+                    
+                    <i class="material-icons h5 mb-1">brush</i>
+                    <a style="color: black;font:bold 19px Arial" id="warna1">
+                     <?php echo $detail['warna_barang']; ?></a>
+                </div>
+
+            
+
+
             <p class="text-secondary small mb-2"><?php echo $barang['nama_kategori']; ?></p>
 
 
@@ -206,7 +210,7 @@ while($data  = mysqli_fetch_assoc($query1)){
                         <?php 
 $id_barang=$_GET['id_barang'];
 $query1 = mysqli_query($koneksi,"SELECT * FROM  tb_detail_barang a 
-RIGHT JOIN tb_barang b ON a.id_barang=b.id_barang WHERE a.id_barang='$id_barang' GROUP BY a.`id_detail_barang` ;  ");
+RIGHT JOIN tb_barang b ON a.id_barang=b.id_barang WHERE a.id_barang='$id_barang' GROUP BY a.`id_detail_barang` DESC  ");
 
 $cek=mysqli_num_rows($query1);
 
@@ -214,23 +218,38 @@ if ($cek>0){
 
 while($data  = mysqli_fetch_assoc($query1)){
 
+
     
 ?>
                         <div class="swiper-slide" >
                             <div class="card shadow-sm border-0" style="background-image:url(gambar_detail/<?php echo str_replace('', '%20', $data[gambar_detail] ) ?>);background-repeat: no-repeat;width: 100%;height: 100%;background-size: 100%;">
                                 <div class="card-body">
                                     <div class="row no-gutters h-100" >
+                                        
                                         <div class="col-12">
-                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18"></i></button>
-                                            <a  class="badge badge-warning text-dark mb-1 mt-2 h6 d-block float-right"><?php echo $data['warna_barang']; ?></a>
+                                            <a  class="badge badge-info text-white mb-1 mt-1 h6 d-block float-right" id="varian<?php echo $data['id_detail_barang'] ?>" data-stok="<?php echo $data['stok_barang'] ?>"
+                                            data-warna="<?php echo $data['warna_barang'] ?>"><i class="material-icons h5 mb-1">check</i></a>
                                         </div>
+                                      
                                         <div class="col-12">
+                                            <a  class="badge badge-warning text-dark mb-1 mt-1 h6 d-block float-right"><?php echo $data['warna_barang']; ?> </a>
                                             <a  class="badge badge-info text-white mb-1 mt-1 h6 d-block float-right">Ukuran: <?php echo $data['ukuran']; ?> </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <script type="text/javascript">
+
+                        $('#varian<?php echo $data['id_detail_barang'] ?>').on('click',function(){
+                        var stok = $(this).attr('data-stok');
+                        var warna = $(this).attr('data-warna');
+                        $("#stok1").text(stok);
+                        $("#warna1").text(warna);
+                        });
+
+                        </script>
+                        
                         <?php }?>
                         <?php }else{?>
             
@@ -242,6 +261,11 @@ while($data  = mysqli_fetch_assoc($query1)){
                     </div>
                 </div>
                 </div>
+
+            
+
+
+            
 
           
             <a style="color: black;">Deskripsi :</a>
@@ -376,8 +400,10 @@ while($data  = mysqli_fetch_assoc($query1)){
     <!-- Modal -->
       <?php 
               
-$queryk = mysqli_query($koneksi,"SELECT * FROM tb_barang ");
+$queryk = mysqli_query($koneksi,"SELECT * FROM tb_barang a INNER JOIN tb_detail_barang b ON a.id_barang=b.id_barang WHERE b.id_barang='$barang[id_barang]' ");
 while($datak  = mysqli_fetch_assoc($queryk)){
+
+
 ?>
 
     <div class="modal fade" id="exampleModalCenter<?php echo $datak['id_barang']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -396,30 +422,44 @@ while($datak  = mysqli_fetch_assoc($queryk)){
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="form-group">
-                        <input type="hidden" class="form-control form-control-sm" autocomplete="off" maxlength="20" name="id_barang" oninvalid="this.setCustomValidity('Harap isi nama akun admin!')" oninput="setCustomValidity('')" required value="<?php echo $datak['id_barang']; ?>" >
+                        <input type="hidden" class="form-control form-control-sm" autocomplete="off" maxlength="20" name="id_detail_barang" oninvalid="this.setCustomValidity('Harap isi nama akun admin!')" oninput="setCustomValidity('')" required value="<?php echo $datak['id_detail_barang']; ?>" >
+                        <input type="text" class="form-control form-control-sm" required id="warna_beli"  value="" >
+                        <input type="text" class="form-control form-control-sm" required  id="ukuran_beli"   value="" >
+
                     </div>
                     <label>Pilih Warna</label>
                     <div class="form-group">
-                        <select name="warna_beli" class="custom-select" autocomplete="off" oninvalid="this.setCustomValidity('Harap pilih warna yang dibeli!')" oninput="setCustomValidity('')" required >
+                       
+                        <select name="id_detail_barang" id="pilih_detil"  class="custom-select" autocomplete="off" oninvalid="this.setCustomValidity('Harap pilih warna yang dibeli!')" oninput="setCustomValidity('')" required >
                             <option value="">--Pilih Warna--</option>
                             <?php 
                             $queryd = mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_barang='$datak[id_barang]' ");
                             while($datad  = mysqli_fetch_assoc($queryd)){
 
                             ?>
-                            <?php
-                            $array = explode(',', $datad['warna_barang']);
-                            $total = count($array);
-                            for ($i=0; $i < $total ; $i++) {
-                            echo "
-                            <option value='$array[$i]'>$array[$i]</option>
-                            ";
-                            }
-                            ?>
+                            <option value="<?php echo $datad['id_detail_barang']; ?>"
+                                data-warna1="<?php echo $datad['warna_barang'] ?>"
+                                data-ukuran1="<?php echo $datad['ukuran'] ?>"
+                                ><?php echo $datad['warna_barang'] ?>--<?php echo $datad['ukuran'] ?>--Stok(<?php echo $datad['stok_barang']; ?>)</option>
+
+                            
 
                             
                             <?php } ?>
                         </select>
+
+                        <script type="text/javascript">
+
+                            $('#pilih_detil').on('change', function(){
+                                 var warna1 = $(this).find('option:selected').data('warna1');
+                                 var ukuran1 = $(this).find('option:selected').data('ukuran1');
+                              
+                                $('#warna_beli').val(warna1);
+                                $('#ukuran_beli').val(ukuran1);
+                            });
+
+                        </script>
+                        
                     </div>
                     <label>Jumlah Beli</label>
                     <div class="input-group input-group-sm">
@@ -513,6 +553,8 @@ while($datak  = mysqli_fetch_assoc($queryk)){
     <!-- template custom js -->
     <script src="js/main.js"></script>
 
+
+
     <!-- page level script -->
     <script>
         $(window).on('load', function() {
@@ -536,6 +578,10 @@ while($datak  = mysqli_fetch_assoc($queryk)){
         });
 
     </script>
+
+    
+
+   
 
 </body>
 
