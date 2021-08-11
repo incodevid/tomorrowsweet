@@ -56,9 +56,7 @@ else {
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="vendor/materializeicon/material-icons.css">
 
-    <!-- Roboto fonts CSS -->
-    <link href="../../../../fonts.googleapis.com/css89ea.css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
-
+    
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
@@ -75,6 +73,30 @@ else {
     <link href="css/style.css" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+
+    <!-- Poppins fonts CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+    min-height: 100%;
+    height: auto;
+    overflow-y: auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    -webkit-overflow-scrolling: touch;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
+    </style>
     
     
 </head>
@@ -173,7 +195,7 @@ while($data  = mysqli_fetch_assoc($query1)){
             
             <div class="badge badge-success float-right mt-1">
                 
-                <a style="color: white;font:bold 15px Arial">Stok</a> <a style="color: white;font:bold 15px Arial" id="stok1"><?php echo $detail['stok_barang']; ?></a>
+                <a style="color: white;font:bold 15px Poppins, sans-serif;">Stok</a> <a style="color: white;font:bold 15px Poppins, sans-serif;" id="stok1"><?php echo $detail['stok_barang']; ?></a>
                 
                     
             </div>
@@ -187,12 +209,12 @@ while($data  = mysqli_fetch_assoc($query1)){
                 <span class="text-dark vm ml-2">Rating 4.2</span> <span class="vm">based on 245 reviews</span>
             </p>-->
 
-            <a href="#" class="text-dark mb-1 mt-2 h6 d-block"><?php echo $barang['nama_barang']; ?>
+            <a href="#" class="text-dark mb-1 mt-2 h6 d-block" style="font:bold 15px Poppins, sans-serif;"><?php echo $barang['nama_barang']; ?>
             </a>
                 <div class=" small float-right badge bg-warning">
                     
                     <i class="material-icons h5 mb-1">brush</i>
-                    <a style="color: black;font:bold 19px Arial" id="warna1">
+                    <a style="color: black;font:bold 19px Poppins, sans-serif;" id="warna1">
                      <?php echo $detail['warna_barang']; ?></a>
                 </div>
 
@@ -269,7 +291,7 @@ while($data  = mysqli_fetch_assoc($query1)){
 
           
             <a style="color: black;">Deskripsi :</a>
-            <p><a class="text-secondary small mb-5"><?php echo $barang['deskripsi']; ?></a></p>
+            <p><a class="text-secondary small mb-5" ><?php echo $barang['deskripsi']; ?></a></p>
         
             
 

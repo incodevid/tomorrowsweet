@@ -36,8 +36,7 @@ else {
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="vendor/materializeicon/material-icons.css">
 
-    <!-- Roboto fonts CSS -->
-    <link href="../../../../fonts.googleapis.com/css89ea.css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -63,6 +62,30 @@ else {
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
     
     <script src="js/ckeditor/ckeditor.js"></script>
+
+    <!-- Poppins fonts CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+    min-height: 100%;
+    height: auto;
+    overflow-y: auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    -webkit-overflow-scrolling: touch;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
+    </style>
     
 
 </head>
