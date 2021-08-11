@@ -683,30 +683,30 @@ else {
                               
                         ?>
            
-                <input type="text" name="kodeBarang[]" value="<?php echo $kodeBarang ?>" class="form-control">
-                <input type="text" name="jml_beli[]" value="<?php echo $t ?>" class="form-control">
-                <input type="text" name="id_akun[]" value="<?php echo $_SESSION['id_akun']; ?>" class="form-control">
-                <input type="text" name="nama_barang[]" value="<?php echo $datakjang['nama_barang']; ?>" class="form-control">
-                <input type="text" name="nama_kategori[]" value="<?php echo $datakjang['nama_kategori']; ?>" class="form-control">
-                <input type="text" name="harga_brg[]" value="<?php echo $datakjang['harga_barang']; ?>" class="form-control ">
-                <input type="text" name="stok_beli[]" value="<?php echo $datakjang['jumlah_stok']; ?>" class="form-control ">
-                <input type="text" name="warna_beli[]" value="<?php echo $datakjang['warna_beli']; ?>" class="form-control">
-                <input type="text" name="ukuran_beli[]" value="<?php echo $datakjang['ukuran_beli']; ?>" class="form-control">
-                <input type="text" name="berat_barang[]" value="<?php echo $datakjang['berat']; ?>" class="form-control">
-                <input type="text" name="subtotal_beli[]" value="<?php echo $subtotaljang ?>" class="form-control ">
-                <input type="text" name="tgl_pesanan[]" value="<?php echo date('Y-m-d H:i:s') ?>" class="form-control ">
-                <input type="text" name="jenis_kirim[]" value="EKSPEDISI" class="form-control ">
+                <input type="hidden" name="kodeBarang[]" value="<?php echo $kodeBarang ?>" class="form-control">
+                <input type="hidden" name="jml_beli[]" value="<?php echo $t ?>" class="form-control">
+                <input type="hidden" name="id_akun[]" value="<?php echo $_SESSION['id_akun']; ?>" class="form-control">
+                <input type="hidden" name="nama_barang[]" value="<?php echo $datakjang['nama_barang']; ?>" class="form-control">
+                <input type="hidden" name="nama_kategori[]" value="<?php echo $datakjang['nama_kategori']; ?>" class="form-control">
+                <input type="hidden" name="harga_brg[]" value="<?php echo $datakjang['harga_barang']; ?>" class="form-control ">
+                <input type="hidden" name="stok_beli[]" value="<?php echo $datakjang['jumlah_stok']; ?>" class="form-control ">
+                <input type="hidden" name="warna_beli[]" value="<?php echo $datakjang['warna_beli']; ?>" class="form-control">
+                <input type="hidden" name="ukuran_beli[]" value="<?php echo $datakjang['ukuran_beli']; ?>" class="form-control">
+                <input type="hidden" name="berat_barang[]" value="<?php echo $datakjang['berat']; ?>" class="form-control">
+                <input type="hidden" name="subtotal_beli[]" value="<?php echo $subtotaljang ?>" class="form-control ">
+                <input type="hidden" name="tgl_pesanan[]" value="<?php echo date('Y-m-d H:i:s') ?>" class="form-control ">
+                <input type="hidden" name="jenis_kirim[]" value="EKSPEDISI" class="form-control ">
           
 
                 <?php $t++; } ?>
 
             
             
-                <input type="text" name="kurir" id="kurir1" value="" >
-                <input type="text" name="tarif"  id="tarif" value="" class="form-control ">
-                <input type="text" name="ongkir" id="ongkir" value="" class="form-control ">
-                <input type="text" name="paket"  id="paket" value="" class="form-control ">
-                <input type="text" name="lama"   id="lama" value="" class="form-control ">
+                <input type="hidden" name="kurir" id="kurir1" value="" >
+                <input type="hidden" name="tarif"  id="tarif" value="" class="form-control ">
+                <input type="hidden" name="ongkir" id="ongkir" value="" class="form-control ">
+                <input type="hidden" name="paket"  id="paket" value="" class="form-control ">
+                <input type="hidden" name="lama"   id="lama" value="" class="form-control ">
           
 
 
@@ -749,7 +749,9 @@ else {
                     <ul class="list-group list-group-flush mb-4">
                         <?php 
                         $h = 1; 
-                        $querytot2 = mysqli_query($koneksi,"SELECT * FROM tb_keranjang a INNER JOIN tb_barang b ON a.id_barang=b.id_barang INNER JOIN tb_detail_barang c ON b.id_barang=c.id_barang WHERE a.id_akun=$id_akun");
+                        $querytot2 = mysqli_query($koneksi,"SELECT * FROM tb_keranjang a INNER JOIN tb_detail_barang b ON a.`id_detail_barang`=b.`id_detail_barang` 
+                        INNER JOIN tb_barang c ON b.`id_barang`=c.`id_barang` INNER JOIN tb_kategori d ON 
+                        c.id_kategori=d.id_kategori WHERE a.id_akun='$id_akun'");
                         while($dataktot2  = mysqli_fetch_assoc($querytot2)){
                             $subtotaltot2    = $dataktot2[harga_barang]* $dataktot2[jumlah_stok];
                             $totaltot2       = $totaltot2 + $subtotaltot2;
@@ -766,8 +768,11 @@ else {
                                 <div class="col px-0">
                                     <a href="#" class="text-dark mb-1 h6 d-block"><?php echo $dataktot2['nama_barang']; ?></a>
                                     <h5 class="text-success font-weight-normal mb-0"><?php echo harga($dataktot2['harga_barang']) ?></h5>
-                                    <p class="text-secondary small text-mute mb-0"><?php echo $dataktot2['status_barang']; ?><span class=" text-info ml-2">Warna <?php echo $dataktot2['warna_beli']; ?></span></p>
-                                    <p class="text-secondary small text-mute mb-0"><span style="font-size: 12px;color:brown;" id="total1[<?php echo $h ?>]" >Sub-Total <?php echo harga($subtotaltot2) ?></span></p>
+                                    <p class="text-secondary small text-mute mb-0"><?php echo $dataktot2['status_barang']; ?><span class=" text-info ml-2">Warna <?php echo $dataktot2['warna_beli']; ?></span><br>
+                                        <span class=" text-info ml-2">Ukuran : <?php echo $dataktot2['ukuran_beli']; ?></span><br>
+                                        <span style="font-size: 12px;color:brown;" id="total1[<?php echo $h ?>]" >Sub-Total <?php echo harga($subtotaltot2) ?></span>
+                                    </p>
+                                    <p class="text-secondary small text-mute mb-0"></p>
                                 </div>
                                 
                             </div>
@@ -829,10 +834,14 @@ else {
             <?php 
                         $i = 1; 
                         $today2 = date("Ymd");
-                        $sqljang2 = mysqli_query($koneksi,"SELECT * FROM tb_keranjang a INNER JOIN tb_barang b ON a.id_barang=b.id_barang INNER JOIN tb_detail_barang c ON b.id_barang=c.id_barang INNER JOIN tb_kategori d ON b.id_kategori=d.id_kategori WHERE a.id_akun=$id_akun");
+                        $sqljang2 = mysqli_query($koneksi,"SELECT * FROM tb_keranjang a INNER JOIN tb_detail_barang b ON a.`id_detail_barang`=b.`id_detail_barang` 
+                        INNER JOIN tb_barang c ON b.`id_barang`=c.`id_barang` INNER JOIN tb_kategori d ON 
+                        c.id_kategori=d.id_kategori WHERE a.id_akun='$id_akun'");
                         while($datakjang2  = mysqli_fetch_assoc($sqljang2)){
                             $subtotaljang2    = $datakjang2[harga_barang] * $datakjang2[jumlah_stok];
                             $totaljang2       = $totaljang2 + $subtotaljang2;
+
+                            $sisa_stok        = $datakjang2[stok_barang] - $datakjang2[jumlah_stok];
 
 
                             // mengambil data barang dengan kode paling besar
@@ -866,6 +875,7 @@ else {
                 <input type="hidden" name="harga_brg2[]" value="<?php echo $datakjang2['harga_barang']; ?>" class="form-control ">
                 <input type="hidden" name="stok_beli2[]" value="<?php echo $datakjang2['jumlah_stok']; ?>" class="form-control ">
                 <input type="hidden" name="warna_beli2[]" value="<?php echo $datakjang2['warna_beli']; ?>" class="form-control">
+                <input type="hidden" name="ukuran_beli2[]" value="<?php echo $datakjang2['ukuran_beli']; ?>" class="form-control">
                 <input type="hidden" name="berat_barang2[]" value="<?php echo $datakjang2['berat']; ?>" class="form-control">
                 <input type="hidden" name="subtotal_beli2[]" value="<?php echo $subtotaljang2 ?>" class="form-control ">
                 <input type="hidden" name="tgl_pesanan2[]" value="<?php echo date('Y-m-d H:i:s') ?>" class="form-control ">

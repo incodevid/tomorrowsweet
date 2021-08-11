@@ -93,6 +93,21 @@ else {
           $query = substr($query, 0, strlen($query) - 1).";";
           mysqli_query($koneksi, $query);
 
+
+           $selSto  =mysqli_query($koneksi, 'SELECT * FROM tb_keranjang WHERE id_akun="'.$_SESSION[id_akun].'"  ');
+          while($sto =mysqli_fetch_assoc($selSto)){
+
+          $qstok = mysqli_fetch_assoc(mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_detail_barang='$sto[id_detail_barang]'"))  ; 
+          $stok = $qstok[stok_barang] - $sto[jumlah_stok];
+
+          mysqli_query($koneksi,"UPDATE tb_detail_barang SET stok_barang = '$stok' WHERE id_detail_barang= '$sto[id_detail_barang]' ");
+
+
+         }
+
+
+
+
           $sql  = 'DELETE FROM tb_keranjang WHERE id_akun="'.$_SESSION[id_akun].'"';
           $querydel  = mysqli_query($koneksi,$sql);
 
