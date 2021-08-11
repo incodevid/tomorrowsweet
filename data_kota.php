@@ -1,4 +1,4 @@
-<?php
+<?php 
 	
 	$id_provinsi_pilih = $_POST['id_provinsi'];
 
