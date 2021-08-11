@@ -444,9 +444,9 @@ while($datak  = mysqli_fetch_assoc($queryk)){
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="form-group">
-                        <input type="hidden" class="form-control form-control-sm" autocomplete="off" maxlength="20" name="id_detail_barang" oninvalid="this.setCustomValidity('Harap isi nama akun admin!')" oninput="setCustomValidity('')" required value="<?php echo $datak['id_detail_barang']; ?>" >
-                        <input type="text" class="form-control form-control-sm" required id="warna_beli"  value="" >
-                        <input type="text" class="form-control form-control-sm" required  id="ukuran_beli"   value="" >
+                        <input type="hidden" class="form-control form-control-sm" autocomplete="off" maxlength="20" name="id_barang" value="<?php echo $barang['id_barang'] ?>"  >
+                        <input type="hidden" class="form-control form-control-sm" required name="warna_beli" id="warna_beli"  value="" >
+                        <input type="hidden" class="form-control form-control-sm" required name="ukuran_beli"  id="ukuran_beli"   value="" >
 
                     </div>
                     <label>Pilih Warna</label>

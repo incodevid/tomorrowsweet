@@ -179,6 +179,18 @@ else {
     }
     </style>
 
+    <style>
+.rubah-scroll {
+
+border:0px solid 3FF6600;
+height:auto;
+width:auto;
+overflow-y:auto;
+overflow-x:scroll;
+background:#E2E6E7;
+}
+</style>
+
 
 </head>
 
@@ -297,13 +309,17 @@ Pasir Putih - 74312<br>
 </tr>
 </table>
 
-<table width="60px" cellpadding="0" cellspacing="0" >
+<div class="rubah-scroll">
+<table id="myScrollTable" width="60px" cellpadding="0" cellspacing="0" >
 <tr class="heading"  >
 <td width="10px" align="center" valign="center" style="white-space:nowrap;font-size: 9px;">
 Nama
 </td>
 <td width="10px" align="center" valign="center" style="white-space:nowrap;font-size: 9px;">
 Warna
+</td>
+<td width="10px" align="center" valign="center" style="white-space:nowrap;font-size: 9px;">
+Ukuran
 </td>
 <td width="10px" align="center" valign="center" style="white-space:nowrap;font-size: 9px;">
 Jumlah
@@ -335,6 +351,9 @@ Subtotal
 <td align="center" valign="center" style="white-space:wrap;font-size: 9px;">
 <?php echo $dataodr1['warna_beli']; ?>
 </td>
+<td align="center" valign="center" style="white-space:wrap;font-size: 9px;">
+<?php echo $dataodr1['ukuran_beli']; ?>
+</td>
 <td align="center" valign="center" style="white-space:nowrap;font-size: 9px;">
 <?php echo $dataodr1['stok_beli']; ?>
 </td>
@@ -350,6 +369,8 @@ Subtotal
 </tr>
 <?php } ?>
 </table>
+</div>
+
 <table>
 <tr class="total" align="right">
 <td></td>

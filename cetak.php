@@ -200,6 +200,9 @@ Nama
 Warna
 </td>
 <td width="10px" align="center" valign="center" style="white-space:nowrap;font-size: 9px;">
+Ukuran
+</td>
+<td width="10px" align="center" valign="center" style="white-space:nowrap;font-size: 9px;">
 Jumlah
 </td>
 <td width="10px" align="center" valign="center" style="white-space:nowrap;font-size: 9px;">
@@ -228,6 +231,9 @@ Subtotal
 </td>
 <td align="center" valign="center" style="white-space:wrap;font-size: 9px;">
 <?php echo $dataodr1['warna_beli']; ?>
+</td>
+<td align="center" valign="center" style="white-space:wrap;font-size: 9px;">
+<?php echo $dataodr1['ukuran_beli']; ?>
 </td>
 <td align="center" valign="center" style="white-space:nowrap;font-size: 9px;">
 <?php echo $dataodr1['stok_beli']; ?>

@@ -14,7 +14,7 @@ else {
 
 
 
-            $sqlk = mysqli_query($koneksi, "SELECT *,COUNT(id_barang) AS jumlah_item FROM tb_keranjang where id_akun='$id_akun' ");
+            $sqlk = mysqli_query($koneksi, "SELECT *,COUNT(id_detail_barang) AS jumlah_item FROM tb_keranjang where id_akun='$id_akun' ");
             $dataker = mysqli_fetch_assoc($sqlk);
             
         
@@ -66,7 +66,9 @@ $hasil=$data['rajaongkir']['results'][0]['costs'];
           return "Rp.".$harga1;
           }
 
-                    $sqleks = mysqli_query($koneksi,"SELECT * FROM tb_keranjang a INNER JOIN tb_barang b ON a.id_barang=b.id_barang INNER JOIN tb_detail_barang c ON b.id_barang=c.id_barang WHERE a.id_akun=$id_akun");
+                    $sqleks = mysqli_query($koneksi,"SELECT * FROM tb_keranjang a INNER JOIN tb_detail_barang b ON a.`id_detail_barang`=b.`id_detail_barang` 
+                        INNER JOIN tb_barang c ON b.`id_barang`=c.`id_barang` 
+                        WHERE a.id_akun='$id_akun'");
                     while($dataeks  = mysqli_fetch_assoc($sqleks)){
                     $subtotaleks    = $dataeks[harga_barang]*$dataeks[jumlah_stok];
                     $totaleks       = $totaleks + $subtotaleks;

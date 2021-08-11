@@ -61,6 +61,7 @@ else {
     $subtotal_beli  = $_POST['subtotal_beli'];
     $stok_beli      = $_POST['stok_beli'];
     $warna_beli     = $_POST['warna_beli'];
+    $ukuran_beli    = $_POST['ukuran_beli'];
     $bank_bayar     = $_POST['bankcek'];
     $jenis_kirim    = $_POST['jenis_kirim'];
     $ekspedisi      = $_POST['kurir'];
@@ -72,7 +73,7 @@ else {
 
 
             
-            $query = "INSERT INTO tb_orderan (kode_orderan,jml_beli,id_akun,nama_barang,nama_kategori,harga_barang,subtotal_beli,stok_beli,warna_beli,bank_bayar,jenis_kirim,ekspedisi,paket_kurir,tarif_paket,berat_barang,tgl_pesanan,status_beli) 
+            $query = "INSERT INTO tb_orderan (kode_orderan,jml_beli,id_akun,nama_barang,nama_kategori,harga_barang,subtotal_beli,stok_beli,warna_beli,ukuran_beli,bank_bayar,jenis_kirim,ekspedisi,paket_kurir,tarif_paket,berat_barang,tgl_pesanan,status_beli) 
             VALUES ";
 
             
@@ -82,7 +83,7 @@ else {
 
            // Kita buat perulangan berdasarkan nis sampai data terakhir
 
-            $query .= "('".$kode_orderan[$index]."','".$databeli."','".$id_akun[$index]."','".$nama_barang[$index]."','".$nama_kategori[$index]."','".$harga_barang[$index]."','".$subtotal_beli[$index]."','".$stok_beli[$index]."','".$warna_beli[$index]."','".$bank_bayar."','".$jenis_kirim[$index]."','".$ekspedisi."','".$paket_kurir."','".$tarif_paket."','".$berat_barang[$index]."','".$tgl_pesanan[$index]."','Menunggu Pembayaran'),";
+            $query .= "('".$kode_orderan[$index]."','".$databeli."','".$id_akun[$index]."','".$nama_barang[$index]."','".$nama_kategori[$index]."','".$harga_barang[$index]."','".$subtotal_beli[$index]."','".$stok_beli[$index]."','".$warna_beli[$index]."','".$ukuran_beli[$index]."','".$bank_bayar."','".$jenis_kirim[$index]."','".$ekspedisi."','".$paket_kurir."','".$tarif_paket."','".$berat_barang[$index]."','".$tgl_pesanan[$index]."','Menunggu Pembayaran'),";
             $index++;
           }
 

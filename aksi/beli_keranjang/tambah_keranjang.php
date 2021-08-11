@@ -51,6 +51,7 @@ else {
 <body>
 <?php
 
+    $id_barang              = $_POST['id_barang']; 
     $id_detail_barang       = $_POST['id_detail_barang']; 
     $jumlah_stok            = $_POST['jumlah_stok']; 
     $warna_beli             = $_POST['warna_beli']; 
@@ -61,8 +62,7 @@ else {
     $sql1 = mysqli_query($koneksi,"SELECT * FROM tb_keranjang WHERE id_detail_barang='$id_detail_barang' AND warna_beli='$warna_beli'  AND id_akun='$id_akun' ") or die(mysql_error());
     $cek=mysqli_num_rows($sql1);
 
-          $sqlnol = mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_detail_barang='$id_detail_barang' AND stok_barang='0' ") or die(mysql_error());
-          $ceknol=mysqli_fetch_assoc($sqlnol);
+          
 
 if ($cek>0){
    echo '<script>setTimeout(function() { 
@@ -71,6 +71,10 @@ if ($cek>0){
             }); 
         }); </script>' ;
 } else {
+
+
+        $sqlnol = mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_detail_barang='$id_detail_barang' AND stok_barang='0' ") or die(mysql_error());
+          $ceknol=mysqli_fetch_assoc($sqlnol);
 
 
         if ($ceknol['stok_barang'] == '0'){
