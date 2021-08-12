@@ -114,6 +114,9 @@ else {
         margin: 0;
         }
     </style>
+
+    <!--ini sweet css alertnya-->
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
     
     
 </head>
@@ -663,7 +666,9 @@ while($datak  = mysqli_fetch_assoc($queryk)){
     var max=document.getElementById("stokb").value;
     var inp=document.getElementById("tambah_stok").value;
     if (inp >= max) {
-        alert("Jumlah melebihi batas stok barang!");
+        setTimeout(function() { 
+        swal("Jumlah melebihi stok tersedia barang", "Klik tombol dibawah untuk melanjutkan", "error"); 
+        });
         $("#number").val(max);
     } else {
          // cont.
@@ -693,7 +698,8 @@ while($datak  = mysqli_fetch_assoc($queryk)){
            
     </script>
   
-
+    <!-- jquery, popper and bootstrap js -->
+<script src="js/sweetalert2.min.js"></script>
    
 
     
