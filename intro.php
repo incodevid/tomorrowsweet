@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide overflow-hidden bg-warning text-white">
+            <div class="swiper-slide overflow-hidden bg-orange text-white">
                 <div class="row no-gutters h-100">
                     <img src="img/logo-TS-white.png" style="margin: 10px auto 20px;display: block;width:300px;height:auto;" alt="" class="align-self-center" >
                     
