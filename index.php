@@ -31,7 +31,7 @@ else {
     <meta name="description" content="">
     <meta name="alfazza" content="alfazza">
 
-    <title>Alfazza | HOME SHOPING</title>
+    <title>Tomorrow Sweet | STORE</title>
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="vendor/materializeicon/material-icons.css">
@@ -84,14 +84,24 @@ else {
     user-select: none;
     }
     </style>
+
+    <style type="text/css">
+        .header-logo {
+    height: 30px;
+    max-height: 48px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 15px auto 0px auto;
+}
+    </style>
     
 </head>
 
 <body>
     <div class="row no-gutters vh-100 loader-screen" style="background-color: grey;">
         <div class="col align-self-center text-white text-center">
-            <img src="img/alfazza_4.png" height="200px" alt="logo">
-            <h1><span class="font-weight-light">ALFAZZA</span> <br>HOME SHOPING</h1>
+            <img src="img/logo-TS-white.png" height="200px" alt="logo">
+            <h1><span class="font-weight-light">Tomorrow Sweet</span> <br>STORE</h1>
             <div class="laoderhorizontal">
                 <div></div>
                 <div></div>
@@ -145,7 +155,7 @@ else {
                 <div class="col-auto">
                     <button class="btn  btn-link text-dark menu-btn"><img src="img/menu.png" alt=""></button>
                 </div>
-                <div class="col text-center"><img src="img/alfazza_4.png" alt="" class="header-logo"></div>
+                <div class="col text-center"><img src="img/logo-TS-head-01.png" alt="" class="header-logo" ></div>
                 <div class="col-auto">
                     <a href="profil.php" class="btn  btn-link text-dark"><i class="material-icons">account_circle</i></a>
                 </div>
@@ -241,14 +251,14 @@ while($data  = mysqli_fetch_assoc($query1)){
                 <div class="container">
                     <div class="row  py-4 ">
                         <div class="col">
-                            <h1 class="text-uppercase mb-3">Selamat Berbelanja Di Alfazza</h1>
+                            <h1 class="text-uppercase mb-3">Welcome to styles area</h1>
                         </div>
                         <div class="col-5 col-md-3 col-lg-2 col-xl-2">
-                            <img src="img/alfazza_3.png" style="height: auto ; width: 100% ; margin: 0 auto;" alt="" class=" mt-3">
+                            <img src="img/logo-TS-white.png" style="height: auto ; width: 150% ; margin: 0 -55px;" alt="" class=" mb-3">
                         </div>
                         <div class="w-100"></div>
                         <div class="col">
-                            <p>Memudahkan Anda Mendapatkan Keperluan Rumah Tangga Dengan Lengkap</p>
+                            <p>Tomorrow Sweet STORE</p>
                         </div>
                     </div>
                 </div>

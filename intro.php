@@ -63,8 +63,8 @@
 <body>
     <div class="row no-gutters vh-100 loader-screen" style="background-color: grey;">
         <div class="col align-self-center text-white text-center">
-            <img src="img/alfazza_4.png" height="200px" alt="logo">
-            <h1><span class="font-weight-light">ALFAZZA</span> <br>HOME SHOPING</h1>
+            <img src="img/logo-TS-white.png" height="200px" alt="logo">
+            <h1><span class="font-weight-light">Tomorrow Sweet</span> <br>STORE</h1>
             <div class="laoderhorizontal">
                 <div></div>
                 <div></div>
@@ -83,7 +83,7 @@
             <div class="swiper-slide overflow-hidden bg-orange text-white">
                 <div class="row no-gutters h-100 ">
                   
-                    <img src="img/alfazza_3.png" style="margin: 10px auto 20px;display: block;width:200px;height:100px;" alt="" class="align-self-center" >
+                    <img src="img/logo-TS-white.png" style="margin: 10px auto 20px;display: block;width:300px;height:auto;" alt="" class="align-self-center" >
                    
                     <img src="img/1.png" style="height: 440px;" alt="" class="orange-slice right-image align-self-center ">
                     <div class="col align-self-center px-3" style="background:rgba(0, 0, 0, 0.20) ;">
@@ -91,8 +91,8 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-6 text-left ">
-                                        <h1 class="text-uppercase">Belanja Perabotan Rumah Tangga</h1>
-                                        <p>Alfazza Shop Tersedia Berbagai Perabotan Rumah Tangga Yang Anda Butuhkan.</p>
+                                        <h1 class="text-uppercase">Style Outfit</h1>
+                                        <p>Tomorrow Sweet Store, Tersedia Berbagai Brand Lokal Untuk Koleksi Style Outfit Kamu.</p>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
             </div>
             <div class="swiper-slide overflow-hidden bg-grey text-white">
                 <div class="row no-gutters h-100">
-                    <img src="img/alfazza_3.png" style="margin: 10px auto 20px;display: block;width:200px;height:100px;" alt="" class="align-self-center" >
+                    <img src="img/logo-TS-white.png" style="margin: 10px auto 20px;display: block;width:300px;height:auto;" alt="" class="align-self-center" >
                     
                     <img src="img/2.png" style="height: 520px;" alt="" class="pinapple right-image align-self-center">
                     <div class="col align-self-center px-3" style="background:rgba(0, 0, 0, 0.20) ;">
@@ -110,8 +110,8 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-6 text-left">
-                                        <h1 class="text-uppercase">Harga Yang Terjangkau Pilihan Untuk Anda</h1>
-                                        <p>Alfazza Shop Dijamin Murahnya.</p>
+                                        <h1 class="text-uppercase">Outfit Of The Day</h1>
+                                        <p>Tomorrow Sweet Store, Let's Date.</p>
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
             </div>
             <div class="swiper-slide overflow-hidden bg-warning text-white">
                 <div class="row no-gutters h-100">
-                    <img src="img/alfazza_3.png" style="margin: 10px auto 20px;display: block;width:200px;height:100px;" alt="" class="align-self-center" >
+                    <img src="img/logo-TS-white.png" style="margin: 10px auto 20px;display: block;width:300px;height:auto;" alt="" class="align-self-center" >
                     
                     <img src="img/3.png" style="height: 420px;" alt="" class="banana right-image align-self-center">
                     <div class="col align-self-center px-3" style="background:rgba(0, 0, 0, 0.20) ;">
@@ -129,8 +129,8 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-6 text-left">
-                                        <h1 class="text-uppercase">Memudahkan Anda Berbelanja Keperluan Rumah Tangga</h1>
-                                        <p>Belanja Keperluan Rumah Tangga Jadi Mudah, Hanya Di Alfazza Shop.</p>
+                                        <h1 class="text-uppercase">Style Different</h1>
+                                        <p>Tomorrow Sweet Store, Cari tampil beda mu, hanya di store kami.</p>
                                     </div>
                                 </div>
                             </div>

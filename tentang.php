@@ -49,14 +49,24 @@
     }
     </style>
 
+    <style type="text/css">
+        .header-logo {
+    height: 30px;
+    max-height: 48px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 15px auto 0px auto;
+}
+    </style>
+
 </head>
 
 <body>
     <!-- Loader -->
     <div class="row no-gutters vh-100 loader-screen" style="background-color: grey;">
         <div class="col align-self-center text-white text-center">
-            <img src="img/alfazza_4.png" height="200px" alt="logo">
-            <h1><span class="font-weight-light">ALFAZZA</span> <br>HOME SHOPING</h1>
+            <img src="img/logo-TS-white.png" height="200px" alt="logo">
+            <h1><span class="font-weight-light">Tomorrow Sweet</span> <br>STORE</h1>
             <div class="laoderhorizontal">
                 <div></div>
                 <div></div>
@@ -74,7 +84,7 @@
                 <div class="col-auto">
                     <a href="index.php" class="btn  btn-link text-dark"><i class="material-icons">navigate_before</i></a>
                 </div>
-                <div class="col text-center"><img src="img/alfazza_4.png" alt="" class="header-logo"></div>
+                <div class="col text-center"><img src="img/logo-TS-head-01.png" alt="" class="header-logo"></div>
                 <div class="col-auto">
                     <a href="profil.php" class="btn  btn-link text-dark"><i class="material-icons">account_circle</i></a>
                 </div>
@@ -86,10 +96,11 @@
             <!-- page content here -->
             <section class="jumbotron text-center mt-3 bg-white shadow-sm">
                 <div class="container">
-                    <h1 class="jumbotron-heading font-weight-normal">Alfazza<b> Home Shoping</b></h1>
-                    <p class="lead text-muted">Keiginan Kami Memberikan Kemudahan Kepada Anda Untuk Mencari Barang - Barang Kebutuhan Rumah Tangga Anda Dengan Nyaman, Lengkap Dan Cepat Serta <b>MURAH</b>.  </p>
+                    <h2 class="jumbotron-heading font-weight-normal">Tomorrow Sweet<b><br> STORE</b></h2>
+                    <p class="lead text-muted">Keiginan Kami Memberikan Kemudahan Kepada Bro Bro dan Sis Sis Mencari Barang - Barang Kebutuhan OOTD Dengan Nyaman, Lengkap berbagai Brand LOKAL. <br>
+                    <b>#styledifferent #outfitoftheday #localpride</b>.</p>
                     <p>
-                        <img src="img/alfazza_2.png" style="height: auto; width: 100%; margin:0 auto;">
+                        <img src="img/logo-TS.png" style="height: auto; width: 100%; margin:0 auto;">
                     </p>
                 </div>
             </section>
@@ -110,7 +121,7 @@
                     <p class="float-right">
                         <a href="#">Kembali Ke Atas</a>
                     </p>
-                    <p>Alfazza Home Shoping © No. HP/WA +6285248663206 a/n Admin.</p>
+                    <p>Tomorrow Sweet © No. HP/WA +6285248663206 a/n Admin.</p>
 
                 </footer>
             </div>

@@ -63,8 +63,8 @@ include "config.php";
 <body>
     <div class="row no-gutters vh-100 loader-screen" style="background-color: grey;">
         <div class="col align-self-center text-white text-center">
-            <img src="img/alfazza_4.png" height="200px" alt="logo">
-            <h1><span class="font-weight-light">ALFAZZA</span> <br>HOME SHOPING</h1>
+            <img src="img/logo-TS-white.png" height="200px" alt="logo">
+            <h1><span class="font-weight-light">Tomorrow Sweet</span> <br>STORE</h1>
             <div class="laoderhorizontal">
                 <div></div>
                 <div></div>
@@ -75,7 +75,7 @@ include "config.php";
     </div>
     <div class="row no-gutters vh-100 proh bg-template">
         <div class="col align-self-center px-3 text-center">
-            <img src="img/alfazza_3.png" alt="logo" class="logo-small">
+            <img src="img/logo-TS-white.png"  style="margin: 10px auto 20px;display: block;width:300px;height:auto;">
             <h2 class="text-white "><span class="font-weight-light">Masuk</span> Aplikasi</h2>
             
             <form class="form-signin shadow" method="POST">
@@ -98,7 +98,7 @@ include "config.php";
 
                     <div class="col align-self-center  pl-0">
                         Tidak Punya Akun?<br>
-                      <a href="buat_akun.php">Buat Akun</a> disini.
+                      <b><a href="buat_akun.php">Buat Akun</a></b> disini.
                     </div>
                 </div>
                 

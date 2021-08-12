@@ -191,14 +191,24 @@ background:#E2E6E7;
 }
 </style>
 
+<style type="text/css">
+        .header-logo {
+    height: 30px;
+    max-height: 48px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 15px auto 0px auto;
+}
+    </style>
+
 
 </head>
 
 <body>
     <div class="row no-gutters vh-100 loader-screen" style="background-color: grey;">
         <div class="col align-self-center text-white text-center">
-            <img src="img/alfazza_4.png" height="200px" alt="logo">
-            <h1><span class="font-weight-light">ALFAZZA</span> <br>HOME SHOPING</h1>
+            <img src="img/logo-TS-white.png" height="200px" alt="logo">
+            <h1><span class="font-weight-light">Tomorrow Sweet</span> <br>STORE</h1>
             <div class="laoderhorizontal">
                 <div></div>
                 <div></div>
@@ -250,7 +260,7 @@ background:#E2E6E7;
                 <div class="col-auto">
                     <a href="riwayat.php" class="btn  btn-link text-dark"><i class="material-icons">navigate_before</i></a>
                 </div>
-                <div class="col text-center"><img src="img/alfazza_4.png" alt="" class="header-logo"></div>
+                <div class="col text-center"><img src="img/logo-TS-head-01.png" alt="" class="header-logo"></div>
                 <div class="col-auto">
                     <a href="profil.php" class="btn  btn-link text-dark"><i class="material-icons">account_circle</i></a>
                 </div>
@@ -267,7 +277,7 @@ background:#E2E6E7;
 <tr>
 <td class="title">
 <a style="float:right;" href="cetak.php?kode_orderan=<?php echo $dataodr['kode_orderan']; ?>" target="_BLANK" class="btn  btn-link text-dark"><i class="material-icons">get_app</i></a>
-<img src="img/alfazza_5.png" style="width:100%; max-width:300px;">
+<img src="img/logo-TS.png" style="width:100%; max-width:300px;">
 </td>
 <td>
 Kode Pesanan #: <b><?php echo $dataodr['kode_orderan']; ?></b><br>
@@ -296,12 +306,12 @@ Bank Pembayaran: <b><?php echo $dataodr['bank_bayar']; ?></b><br>
 Owner Shop<br>
 Benny Sarmoko<br>
 benny54121@gmail.com<br>
-Alfazza Shop<br>
-Jl. Jendral Sudirman PERUM BKP GG CANCER No.33<br>
+Tomorrow Sweet STORE<br>
+Jl. Tingang XV No.01<br>
 Kalimantan Tengah<br>
-Kotawaringin Timur<br>
-Mentawa Baru Ketapang<br>
-Pasir Putih - 74312<br>
+Palangka Raya<br>
+Jekan Raya<br>
+Palangka - 73112<br>
 </td>
 </tr>
 </table>

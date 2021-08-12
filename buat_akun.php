@@ -67,8 +67,8 @@ include"config.php";
 <body>
     <div class="row no-gutters vh-100 loader-screen" style="background-color: grey;">
         <div class="col align-self-center text-white text-center">
-            <img src="img/alfazza_4.png" height="200px" alt="logo">
-            <h1><span class="font-weight-light">ALFAZZA</span> <br>HOME SHOPING</h1>
+            <img src="img/logo-TS-white.png" height="200px" alt="logo">
+            <h1><span class="font-weight-light">Tomorrow Sweet</span> <br>STORE</h1>
             <div class="laoderhorizontal">
                 <div></div>
                 <div></div>
@@ -164,15 +164,11 @@ if (!empty($_FILES["nama_file"]["tmp_name"])) {
     ?>
 
 <div class="wrapper ">
-        <div class="header bg-template">
-            <div class="row no-gutters bg-template">
-                <div class="col text-center"><img src="img/alfazza_4.png" alt="" class="header-logo"></div>
-            </div>
-        </div>
+        
       
     <div class=" vh-100 proh bg-template">
         <div class="col align-self-center px-3  text-center bg-template">
-            <img src="img/alfazza_3.png" alt="logo" class="logo-small">
+            <img src="img/logo-TS-white.png" alt="logo" style="margin: 10px auto 20px;display: block;width:200px;height:auto;">
             <h2 class="text-white"><span class="font-weight-light">Buat</span> Akun</h2>
             <form class="form-signin shadow " method="POST" enctype="multipart/form-data" >
 
@@ -264,7 +260,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"])) {
             </form>
             <p class="text-center text-white">
                 Sudah Mempunyai Akun?<br>
-                <a href="login.php">Masuk</a> disini.
+                <b><a href="login.php">Masuk</a></b> disini.
             </p>
             <br>
             <br>

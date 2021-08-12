@@ -117,6 +117,16 @@ else {
 
     <!--ini sweet css alertnya-->
     <link rel="stylesheet" href="css/sweetalert2.min.css">
+
+     <style type="text/css">
+        .header-logo {
+    height: 30px;
+    max-height: 48px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 15px auto 0px auto;
+}
+    </style>
     
     
 </head>
@@ -124,8 +134,8 @@ else {
 <body>
     <div class="row no-gutters vh-100 loader-screen" style="background-color: grey;">
         <div class="col align-self-center text-white text-center">
-            <img src="img/alfazza_4.png" height="200px" alt="logo">
-            <h1><span class="font-weight-light">ALFAZZA</span> <br>HOME SHOPING</h1>
+            <img src="img/logo-TS-white.png" height="200px" alt="logo">
+            <h1><span class="font-weight-light">Tomorrow Sweet</span> <br>STORE</h1>
             <div class="laoderhorizontal">
                 <div></div>
                 <div></div>
@@ -140,7 +150,7 @@ else {
                 <div class="col-auto">
                     <a href="all_produk.php" class="btn  btn-link text-dark"><i class="material-icons">navigate_before</i></a>
                 </div>
-                <div class="col text-center"><img src="img/alfazza_4.png" alt="" class="header-logo"></div>
+                <div class="col text-center"><img src="img/logo-TS-head-01.png" alt="" class="header-logo"></div>
                 <div class="col-auto">
                     <a href="profil.php" class="btn  btn-link text-dark"><i class="material-icons">account_circle</i></a>
                 </div>
