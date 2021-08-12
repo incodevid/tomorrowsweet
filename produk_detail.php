@@ -97,6 +97,23 @@ else {
     user-select: none;
     }
     </style>
+
+    <style type="text/css">
+        .inline-group {
+        max-width: 20rem;
+        padding: .5rem;
+        }
+
+        .inline-group .form-control {
+        text-align: center;
+        }
+
+        .form-control[type="number"]::-webkit-inner-spin-button,
+        .form-control[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+    </style>
     
     
 </head>
@@ -447,12 +464,14 @@ while($datak  = mysqli_fetch_assoc($queryk)){
                         <input type="hidden" class="form-control form-control-sm" autocomplete="off" maxlength="20" name="id_barang" value="<?php echo $barang['id_barang'] ?>"  >
                         <input type="hidden" class="form-control form-control-sm" required name="warna_beli" id="warna_beli"  value="" >
                         <input type="hidden" class="form-control form-control-sm" required name="ukuran_beli"  id="ukuran_beli"   value="" >
+                        <input type="hidden" class="form-control form-control-sm" required   id="stokb"  value="" >
+                        <input type="hidden" class="form-control form-control-sm" required  id="tambah_stok" value="" >
 
                     </div>
                     <label>Pilih Warna</label>
                     <div class="form-group">
                        
-                        <select name="id_detail_barang" id="pilih_detil"  class="custom-select" autocomplete="off" oninvalid="this.setCustomValidity('Harap pilih warna yang dibeli!')" oninput="setCustomValidity('')" required >
+                        <select name="id_detail_barang" id="pilih_detil"  class="custom-select" autocomplete="off" oninvalid="this.setCustomValidity('Harap pilih warna yang dibeli!')" oninput="setCustomValidity('')" required onchange="myFunction(this.value)">
                             <option value="">--Pilih Warna--</option>
                             <?php 
                             $queryd = mysqli_query($koneksi,"SELECT * FROM tb_detail_barang WHERE id_barang='$datak[id_barang]' ");
@@ -462,7 +481,8 @@ while($datak  = mysqli_fetch_assoc($queryk)){
                             <option value="<?php echo $datad['id_detail_barang']; ?>"
                                 data-warna1="<?php echo $datad['warna_barang'] ?>"
                                 data-ukuran1="<?php echo $datad['ukuran'] ?>"
-                                ><?php echo $datad['warna_barang'] ?>--<?php echo $datad['ukuran'] ?>--Stok(<?php echo $datad['stok_barang']; ?>)</option>
+                                data-stok1="<?php echo $datad['stok_barang'] ?>"
+                                ><?php echo $datad['warna_barang'] ?>--Ukuran (<?php echo $datad['ukuran'] ?>)--Stok (<?php echo $datad['stok_barang']; ?>)</option>
 
                             
 
@@ -475,23 +495,38 @@ while($datak  = mysqli_fetch_assoc($queryk)){
                             $('#pilih_detil').on('change', function(){
                                  var warna1 = $(this).find('option:selected').data('warna1');
                                  var ukuran1 = $(this).find('option:selected').data('ukuran1');
+                                 var stok1 = $(this).find('option:selected').data('stok1');
                               
                                 $('#warna_beli').val(warna1);
                                 $('#ukuran_beli').val(ukuran1);
+                                $('#stokb').val(stok1);
+                                
+                                
+
+                                
+
                             });
 
                         </script>
                         
                     </div>
                     <label>Jumlah Beli</label>
-                    <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                            <button  class="btn btn-light-grey px-1" type="button"><i class="material-icons">remove</i></button>
-                        </div>
-                        <input name="jumlah_stok" onchange="hitung(this.value,<?php echo $n ?>)" type="number" min="1" class="form-control w-35" placeholder="" value="1">
-                        <div class="input-group-append">
-                            <button  class="btn btn-light-grey px-1" type="button"><i class="material-icons">add</i></button>
-                        </div>
+                    <!--INI COBA-->
+                    <div id="tbstok" style="display: none;">
+                    <div class="input-group inline-group" id="only-number" >
+                      <div class="input-group-prepend">
+                        <button  class="btn btn-outline-secondary btn-minus btn-light-grey px-1" type="button">
+                          <i class="material-icons">remove</i>
+                        </button>
+                      </div>
+                      <input class="form-control hasMaxInput" name="jumlah_stok" id="number" onchange="hitung(this.value,<?php echo $n ?>)" min="1" value="1" type="number" pattern="\d*" readonly
+                       max="">
+                      <div class="input-group-append">
+                        <button onclick="$(this).prev()[0].stepUp();preventDefault()" class="btn btn-outline-secondary btn-plus btn-light-grey px-1">
+                          <i class="material-icons">add</i>
+                        </button>
+                      </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -600,6 +635,66 @@ while($datak  = mysqli_fetch_assoc($queryk)){
         });
 
     </script>
+
+
+    <script>
+    $(function() {
+      $('#only-number').on('keydown', '#number', function(e){
+          -1!==$
+          .inArray(e.keyCode,[46,8,9,27,13,110,190]) || /65|67|86|88/
+          .test(e.keyCode) && (!0 === e.ctrlKey || !0 === e.metaKey)
+          || 35 <= e.keyCode && 40 >= e.keyCode || (e.shiftKey|| 48 > e.keyCode || 57 < e.keyCode)
+          && (96 > e.keyCode || 105 < e.keyCode) && e.preventDefault()
+      });
+        })
+    </script>
+
+    <script>
+    $('.btn-plus, .btn-minus').on('click', function(e) {
+    const isNegative = $(e.target).closest('.btn-minus').is('.btn-minus');
+    const input = $(e.target).closest('.input-group').find('input');
+    if (input.is('input')) {
+    input[0][isNegative ? 'stepDown' : 'stepUp']()
+    }
+
+    var jml_stok = document.getElementById("number").value;
+    document.getElementById("tambah_stok").value=jml_stok;
+
+    var max=document.getElementById("stokb").value;
+    var inp=document.getElementById("tambah_stok").value;
+    if (inp >= max) {
+        alert("Jumlah melebihi batas stok barang!");
+        $("#number").val(max);
+    } else {
+         // cont.
+    }
+
+    });
+
+    $('form').on('click', 'button:not([type="submit"])', function(e){
+      e.preventDefault();
+    })
+
+    </script>
+
+    <script>
+        function myFunction() {
+                var x = document.getElementById("pilih_detil").value;
+
+                if ( x == "" ) {
+
+                document.getElementById("tbstok").style.display = "none";
+            }else{
+             
+                document.getElementById("tbstok").style.display = "block";
+
+        };
+    }
+           
+    </script>
+  
+
+   
 
     
 
