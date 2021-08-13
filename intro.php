@@ -60,7 +60,7 @@
     </style>
 </head>
 
-<body>
+<body oncontextmenu="return false" onkeydown="return false;" onmousedown="return false;">
     <div class="row no-gutters vh-100 loader-screen" style="background-color: grey;">
         <div class="col align-self-center text-white text-center">
             <img src="img/logo-TS-white.png" height="200px" alt="logo">

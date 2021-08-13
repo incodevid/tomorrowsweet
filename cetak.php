@@ -141,7 +141,7 @@ else {
 	}
 	</style>
 </head>
-<body>
+<body oncontextmenu="return false">
 <div class="invoice-box">
 <table cellpadding="0" cellspacing="0" >
 <tr class="top">
@@ -267,5 +267,26 @@ Total: <?php echo harga($total1) ?>
 <script>
 		window.print();
 </script>
+
+<script type="text/javascript">
+ document.onkeydown = function(e) {
+if(event.keyCode == 123) {
+return false;
+}
+if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+alert('@copyright Access denied')
+return false;
+}
+if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+alert('@copyright Access denied')
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+alert('@copyright Access denied')
+return false;
+}
+}   
+</script>
+
 </body>
 </html>

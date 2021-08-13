@@ -2,14 +2,14 @@
 <html lang="en" class="grey-theme">
  
 
-<!-- Mirrored from maxartkiller.com/website/GoMobileUX/gofruit/aboutus.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jun 2020 09:28:24 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
     <meta name="description" content="">
-    <meta name="author" content="Maxartkiller">
+    <meta name="author" content="Tomorrow Sweet">
 
-    <title>Tentang Alfazza Home Shoping</title> 
+    <title>Tentang Tomorrow Sweet STORE</title> 
 
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="vendor/materializeicon/material-icons.css">
@@ -61,7 +61,7 @@
 
 </head>
 
-<body>
+<body oncontextmenu="return false">
     <!-- Loader -->
     <div class="row no-gutters vh-100 loader-screen" style="background-color: grey;">
         <div class="col align-self-center text-white text-center">
@@ -149,8 +149,29 @@
 
     </script>
 
+
+<script type="text/javascript">
+ document.onkeydown = function(e) {
+if(event.keyCode == 123) {
+return false;
+}
+if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+alert('@copyright Access denied')
+return false;
+}
+if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+alert('@copyright Access denied')
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+alert('@copyright Access denied')
+return false;
+}
+}   
+</script>
+
 </body>
 
 
-<!-- Mirrored from maxartkiller.com/website/GoMobileUX/gofruit/aboutus.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jun 2020 09:28:25 GMT -->
+
 </html>

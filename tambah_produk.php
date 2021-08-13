@@ -100,7 +100,7 @@ else {
 
 </head>
 
-<body>
+<body oncontextmenu="return false">
     <div class="row no-gutters vh-100 loader-screen" style="background-color: grey;">
         <div class="col align-self-center text-white text-center">
             <img src="img/logo-TS-white.png" height="200px" alt="logo">
@@ -697,6 +697,27 @@ e.value = 'Rp. 0';
 </script>
 
 
+<script type="text/javascript">
+ document.onkeydown = function(e) {
+if(event.keyCode == 123) {
+return false;
+}
+if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+alert('@copyright Access denied')
+return false;
+}
+if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+alert('@copyright Access denied')
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+alert('@copyright Access denied')
+return false;
+}
+}   
+</script>
+
+
 
 
 
@@ -707,5 +728,4 @@ e.value = 'Rp. 0';
 </body>
 
 
-<!-- Mirrored from maxartkiller.com/website/GoMobileUX/gofruit/notification.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jun 2020 09:27:40 GMT -->
 </html>
