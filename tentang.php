@@ -1,3 +1,25 @@
+<?php
+error_reporting(0);
+session_start();
+include 'config.php';
+date_default_timezone_set('Asia/Jakarta');
+$tgl=date('Y-m-d');
+function tglIndonesia($str){
+       $tr   = trim($str);
+       $str    = str_replace(array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'), array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'), $tr);
+       return $str;
+   }
+if (empty($_SESSION['username']) AND empty($_SESSION['password'])) 
+ {echo "<script>;document.location='intro.php' </script> ";}
+else {
+     
+    
+            $id_akun=$_SESSION['id_akun'];
+            $sql = mysqli_query($koneksi, "SELECT * FROM tb_akun where id_akun='$id_akun' ");
+            $t = mysqli_fetch_assoc($sql);
+            
+        
+ ?>
 <!doctype html>
 <html lang="en" class="grey-theme">
  
@@ -130,6 +152,8 @@
 
     </div>
 
+
+<?php } ?>
     <!-- jquery, popper and bootstrap js -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>     <script src="vendor/bootstrap-4.4.1/js/bootstrap.min.js"></script>
