@@ -101,6 +101,7 @@ include "config.php";
                       <b><a href="buat_akun.php">Buat Akun</a></b> disini.
                     </div>
                 </div>
+
                 
                 <?php
 error_reporting(0);
@@ -136,6 +137,10 @@ else {
     </div>  
 <?php }} ?>
             </form>
+            <div class="col align-self-center  pl-0" style="color: white;">
+                Lupa Password?<br>
+              <b><a href="lupa_pass.php">Klik</a></b> disini.
+            </div>
             <br>
                 <a href="privacy-policy.html">Privacy Policy</a>&nbsp;&nbsp;
                 <a href="terms-condition.html">Terms Condition</a>
