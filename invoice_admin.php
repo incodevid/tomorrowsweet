@@ -44,8 +44,7 @@ else {
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="vendor/materializeicon/material-icons.css">
 
-    <!-- Roboto fonts CSS -->
-    <link href="../../../../fonts.googleapis.com/css89ea.css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <link rel="icon" href="img/logo-TS.png">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">

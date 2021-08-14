@@ -38,7 +38,7 @@ else {
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="vendor/materializeicon/material-icons.css">
 
-    
+    <link rel="icon" href="img/logo-TS.png">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">

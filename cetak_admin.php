@@ -34,7 +34,7 @@ else {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cetak Invoice</title>
 
-<link rel="icon" href="/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="img/logo-TS.png">
 
 <style>
 	body{

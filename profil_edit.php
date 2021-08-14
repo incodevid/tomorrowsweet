@@ -36,7 +36,7 @@ else {
     <!-- Material design icons CSS -->
     <link rel="stylesheet" href="vendor/materializeicon/material-icons.css">
 
-    
+    <link rel="icon" href="img/logo-TS.png">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -247,7 +247,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"])) {
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="form-group float-label active">
-                        <input type="text" class="form-control" name="email" oninvalid="this.setCustomValidity('Harap isi email yang aktif!')" oninput="setCustomValidity('')" required value="<?php echo $t['email']; ?>" autocomplete="off">
+                        <input type="email" class="form-control" name="email" oninvalid="this.setCustomValidity('Harap isi email yang aktif!')" oninput="setCustomValidity('')" required value="<?php echo $t['email']; ?>" autocomplete="off">
                         <label class="form-control-label">Alamat Email</label>
                     </div>
                 </div>
@@ -325,6 +325,60 @@ if (!empty($_FILES["nama_file"]["tmp_name"])) {
 
             <input type="submit" class="btn btn-lg btn-default text-white btn-block btn-rounded shadow" value="SIMPAN" name="btnSimpan">
             <br>
+        </form>
+
+        <!--RUBAH PASSWORD-->
+        <?php
+            
+           
+        if (isset($_POST['btnRubahPass'])) {
+        
+        $id_akun             = $_SESSION['id_akun'];
+        $password            = $_POST['password']; 
+        
+
+            
+
+            $sql = mysqli_query($koneksi," UPDATE tb_akun SET password='$password' WHERE id_akun='$id_akun'  ");
+            if ($sql) {
+               echo '<script>setTimeout(function() { 
+                    swal("Password Berhasil Dirubah!", "Klik tombol dibawah untuk melanjutkan", "success").then(function() { 
+                            window.location.href="profil_edit.php"; 
+                        }); 
+                    }); </script>' ;
+             } else {
+              echo '<script>setTimeout(function() { 
+                    swal("Pasword Gagal Dirubah!", "Klik tombol dibawah untuk melanjutkan", "error").then(function() { 
+                            window.location.href="profil_edit.php"; 
+                        }); 
+                    }); </script>' ;
+             }
+            
+/* 
+}
+*/
+    }
+     
+           
+    ?>
+        <h6 class="subtitle">Rubah Password</h6>
+        <form method="POST" enctype="multipart/form-data">
+        <div class="row">
+                <div class="col-12 ">
+                    <div class="form-group float-label active">
+                        <input type="text" class="form-control" name="username" required value="<?php echo $t['username']; ?>" readonly>
+                        <label class="form-control-label">Username</label>
+                    </div>
+                </div>
+                <div class="col-12 ">
+                    <div class="form-group float-label active">
+                        <input type="password" minlength="6" name="password"  class="form-control" required autocomplete="off" id="pass" value="<?php echo $t['password']; ?>">
+                        <label  class="form-control-label">Password &nbsp;&nbsp;<span class="float-right" id="mybutton" onclick="change()"><i class="material-icons">visibility_off</i></span></label>
+                    </div>
+                </div>
+
+                <input type="submit" class="btn btn-lg btn-default text-white btn-block btn-rounded shadow" value="UPDATE" name="btnRubahPass">
+        </div>
         </form>
         </div>
 
@@ -572,6 +626,24 @@ alert('@copyright Access denied')
 return false;
 }
 }   
+</script>
+
+<script type="text/javascript">
+    function change()
+         {
+            var x = document.getElementById('pass').type;
+
+            if (x == 'password')
+            {
+               document.getElementById('pass').type = 'text';
+               document.getElementById('mybutton').innerHTML = '<i class="material-icons">visibility</i>';
+            }
+            else
+            {
+               document.getElementById('pass').type = 'password';
+               document.getElementById('mybutton').innerHTML = '<i class="material-icons">visibility_off</i>';
+            }
+         }
 </script>
 
 
